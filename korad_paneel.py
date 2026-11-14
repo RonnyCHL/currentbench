@@ -1361,6 +1361,7 @@ class App(tk.Tk):
         self.inq, self.cmdq = queue.Queue(), queue.Queue()
         self.hist = deque(maxlen=400000)   # ruim 20 uur bij ~5 metingen per seconde (nachttest)
         self.vset = self.iset = self.out = None
+        self._grens_check = False           # na het verbinden eenmalig de ingestelde spanning tegen de grens houden
         self.log_file = self.log_writer = None
         self.log_rows = 0
         self.span = tk.IntVar(value=60)
@@ -1850,6 +1851,7 @@ class App(tk.Tk):
         self.idn = tr("Demo: nagebootste voeding, geen echte meting") if port == DEMO_POORT else idn
         self._zet_model(model)
         self.hist.clear()
+        self._grens_check = True
         self.status_lbl.config(text=self.idn if port == DEMO_POORT else tr("Verbonden met {0} op {1}", idn, port))
         self.conn_lamp.set(True)
         self.conn_btn.config(text=tr("Verbreken"), bg=CARD_2)
@@ -2066,6 +2068,9 @@ class App(tk.Tk):
         self.gauges["w"].show(nlf(w, 2))
         if st:
             self.out = st["out"]
+            if self._grens_check and self.vset is not None:
+                self._grens_check = False
+                self._spanning_binnen_grens()
             self.lamp_out.set(st["out"])
             self.lamp_cv.set(st["out"] and st["cv"])
             self.lamp_cc.set(st["out"] and not st["cv"], LED_AMBER)
@@ -3000,11 +3005,11 @@ class App(tk.Tk):
             self._enforce_limits(self.vset, self.iset or 0)
 
     def _spanning_binnen_grens(self):
-        """Na het kiezen of wijzigen van een project: staat de voeding hoger ingesteld dan de nieuwe grens en is de
+        """Na het verbinden en na het kiezen of wijzigen van een project: staat de voeding hoger ingesteld dan de nieuwe grens en is de
         uitgang uit, dan gaat de ingestelde spanning mee omlaag. Omlaag is altijd veilig; met de uitgang aan grijpt
         _enforce_limits in."""
         vmax = self._limits()[0]
-        if self.dev and not self.out and self.vset is not None and self.vset > vmax + 0.005:
+        if self.dev and self.out is False and self.vset is not None and self.vset > vmax + 0.005:
             self.cmdq.put(f"VSET1:{vmax:.2f}")
             self._add_marker(tr("spanning teruggezet naar {0} V (grens)", nl(vmax)))
 

@@ -30,7 +30,9 @@ Created by **Ronny Hullegie** ([www.ronnyhullegie.nl](https://www.ronnyhullegie.
 
 ## Getting started
 
-**The easy way:** download `CurrentBench.exe` from the [Releases](https://github.com/RonnyCHL/currentbench/releases) page and start it. It is one file and needs no installation and no Python. The file is not code-signed, so the first time Windows shows "Windows protected your PC": click **More info** and then **Run anyway**.
+**The easy way:** download `CurrentBench-<version>-windows.zip` from the [Releases](https://github.com/RonnyCHL/currentbench/releases) page, unpack it anywhere and start `CurrentBench.exe` in the folder. No installation and no Python needed.
+
+The program is not code-signed: that costs money every year, and this is a free hobby project. So the first time Windows may show "Windows protected your PC" (click **More info**, then **Run anyway**), and a virus scanner may hold the program for half a minute to scan it because it has never seen it before. That is normal for new, unsigned software. If you would rather not trust a download, run it from source: every line is in this repository.
 
 **From source:** you need Windows 10 or 11 and Python 3.10 or newer.
 
@@ -108,14 +110,14 @@ py tests/proef_analyse.py
 py tests/proef_vertaling.py
 ```
 
-## Building the .exe
+## Building the Windows program
 
 ```
 py -m pip install pyinstaller
 py tools/maak_exe.py
 ```
 
-The result is `dist/CurrentBench.exe`, with the translations, the icon and the manuals inside.
+The result is `dist/CurrentBench/` with `CurrentBench.exe`, and a zip of that folder to hand out. The translations, the icon and the manuals are inside. `py tools/maak_exe.py --onefile` builds a single `.exe` instead; it starts slower and virus scanners distrust it more.
 
 ## Licence
 

@@ -1,19 +1,32 @@
-"""Build CurrentBench.exe: one file that runs without Python.
+"""Build CurrentBench for Windows, so it runs without Python.
 
-    <python with pyinstaller, pyserial and pillow> tools/maak_exe.py [output folder]
+    <python with pyinstaller, pyserial and pillow> tools/maak_exe.py [output folder] [--onefile]
 
-The result is <output folder>/CurrentBench.exe (default: dist/ next to the program). Translations, the icon and the
-manuals travel inside the .exe; user data goes to the folder described in korad_paden.py.
+Default: a folder CurrentBench/ with CurrentBench.exe and its files, plus CurrentBench-<version>-windows.zip to hand
+out. A folder starts faster than a single file and virus scanners trust it more: a single file unpacks itself on every
+start, which is also what malware does. With --onefile you get that single CurrentBench.exe anyway.
+
+Translations, the icon and the manuals travel with the program; user data goes to the folder described in
+korad_paden.py. Output folder default: dist/ next to the program.
 """
 from __future__ import annotations
 
+import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-UIT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT / "dist"
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+EEN_BESTAND = "--onefile" in sys.argv
+UIT = Path(ARGS[0]).resolve() if ARGS else ROOT / "dist"
 WERK = UIT / "_bouw"
+
+
+def versie() -> str:
+    m = re.search(r'^VERSIE = "([^"]+)"', (ROOT / "korad_paneel.py").read_text(encoding="utf-8"), re.MULTILINE)
+    return m.group(1) if m else "0"
 
 
 def data(bron: str, doel: str) -> str:
@@ -22,8 +35,8 @@ def data(bron: str, doel: str) -> str:
 
 def main() -> int:
     opdracht = [
-        sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--windowed",
-        "--name", "CurrentBench", "--icon", str(ROOT / "korad.ico"),
+        sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile" if EEN_BESTAND else "--onedir",
+        "--windowed", "--name", "CurrentBench", "--icon", str(ROOT / "korad.ico"),
         "--distpath", str(UIT), "--workpath", str(WERK), "--specpath", str(WERK),
         "--add-data", data("lang", "lang"),
         "--add-data", data("korad.ico", "."),
@@ -33,10 +46,18 @@ def main() -> int:
         opdracht += ["--add-data", f"{pdf};docs/handleiding"]
     opdracht.append(str(ROOT / "korad_paneel.py"))
     klaar = subprocess.run(opdracht, cwd=ROOT)
-    exe = UIT / "CurrentBench.exe"
-    if klaar.returncode == 0 and exe.exists():
+    if klaar.returncode != 0:
+        return klaar.returncode
+    if EEN_BESTAND:
+        exe = UIT / "CurrentBench.exe"
         print(f"built: {exe} ({exe.stat().st_size / 1e6:.1f} MB)")
-    return klaar.returncode
+        return 0
+    map_ = UIT / "CurrentBench"
+    shutil.copy2(ROOT / "LICENSE", map_ / "LICENSE.txt")
+    zip_ = shutil.make_archive(str(UIT / f"CurrentBench-{versie()}-windows"), "zip", root_dir=UIT, base_dir="CurrentBench")
+    print(f"built: {map_ / 'CurrentBench.exe'}")
+    print(f"built: {zip_} ({Path(zip_).stat().st_size / 1e6:.1f} MB)")
+    return 0
 
 
 if __name__ == "__main__":
