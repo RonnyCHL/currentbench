@@ -84,7 +84,7 @@ Everything you create stays on your computer, in `%APPDATA%\CurrentBench`. **Set
 
 ## Reporting a problem
 
-Open **Tools > Error information**. That window collects what is needed to look into a problem: version, Windows, the model of the supply and the last errors. It contains no codes, addresses, serial numbers or project names, and the program sends nothing by itself. **Report on GitHub** copies the text and opens a new [issue](https://github.com/RonnyCHL/currentbench/issues); paste the text and describe what happened. A contact form on [www.ronnyhullegie.nl](https://www.ronnyhullegie.nl), for people without a GitHub account, is on its way.
+Open **Tools > Error information**. That window collects what is needed to look into a problem: version, Windows, the model of the supply and the last errors. It contains no codes, addresses, serial numbers or project names, and the program sends nothing by itself. **Report on GitHub** copies the text and opens a new [issue](https://github.com/RonnyCHL/currentbench/issues); paste the text and describe what happened. No GitHub account? **Report via the website** does the same with the form at [ronnyhullegie.nl/currentbench/melden](https://ronnyhullegie.nl/currentbench/melden), in English, Dutch or German.
 
 ## Scripts
 

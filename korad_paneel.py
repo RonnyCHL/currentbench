@@ -102,7 +102,8 @@ WEBSITE = "www.ronnyhullegie.nl"
 # Waar een gebruiker een fout meldt. Leeg = de knop staat er niet. Het programma verstuurt zelf niets: het
 # kopieert de foutinformatie en opent de pagina, de gebruiker plakt en verstuurt.
 MELD_GITHUB = "https://github.com/RonnyCHL/currentbench/issues/new"        # de pagina voor een nieuwe melding in de openbare repository
-MELD_WEBSITE = ""       # het contactformulier, voor wie geen GitHub-account heeft
+MELD_WEBSITE = "https://ronnyhullegie.nl/currentbench/melden"   # formulier voor wie geen GitHub-account heeft;
+#                                                                 het paneel zet er ?lang=<taal> achter
 ICONEN = {"info": "\uE946", "hulp": "\uE897", "werkbank": "\uE740", "mini": "\uE73F", "projecten": "\uE8F1",
           "afdruk": "\uE928", "gereedschap": "\uE90F", "werkboek": "\uE736", "instellingen": "\uE713",
           "ververs": "\uE72C", "omlaag": "\uE70D", "curve": "\uE9D2", "onderdeel": "\uE950",
@@ -4709,7 +4710,8 @@ class App(tk.Tk):
         if MELD_GITHUB:
             self._btn(bar, tr("Melden op GitHub"), lambda: meld(MELD_GITHUB), bg=BLUE).pack(side="left", padx=(0, 6))
         if MELD_WEBSITE:
-            self._btn(bar, tr("Melden via de website"), lambda: meld(MELD_WEBSITE)).pack(side="left", padx=(0, 6))
+            self._btn(bar, tr("Melden via de website"), lambda: meld(f"{MELD_WEBSITE}?lang={korad_taal.huidig()}")).pack(
+                side="left", padx=(0, 6))
         self._btn(bar, tr("Kopiëren"), kopieer, bg=PANEL_DARK if MELD_GITHUB else BLUE).pack(side="left")
         self._btn(bar, tr("Opslaan als"), bewaar).pack(side="left", padx=6)
         stand.pack(side="left", padx=8)
