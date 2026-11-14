@@ -1,0 +1,266 @@
+<section id="veiligheid"><h2>Safety first</h2>
+<p>{{NAAM}} controls a real power supply. A wrong setting can damage a circuit, and a bug in a program or a loose USB cable can always happen. Use the program at your own risk.</p>
+<div class="kader let-op"><div class="kop">The real protection is in the supply</div>
+<p>The current limit on the supply always works, even if the program is closed or has crashed. So always set it to a suitable value, and never rely on the program alone. If the program goes away while the output is on, the output simply stays on.</p></div>
+<h3>Four habits</h3>
+<ol class="stappen">
+<li>First the current limit, then the voltage, and only then turn the output on.</li>
+<li>With anything new, start with a low current limit, for example 0.1 A, and watch whether the supply is limiting.</li>
+<li>Check the polarity: red terminal plus, black terminal minus.</li>
+<li>Turn the output off when you are done, and before you connect or disconnect anything.</li>
+</ol>
+<div class="kader"><div class="kop">Emergency stop</div><p>The <b>Esc</b> key turns the output off immediately, in every window of the program. Everything that is running stops too.</p></div>
+<p>How to read this manual: buttons appear in the text as [[Gereedschap]], [[blauw:Instellen]], [[groen:Opslaan]] or [[rood:Stop]]. The example screens were made with a simulated supply; you will see your own values.</p>
+</section>
+
+<section id="installeren"><h2>Installing and starting</h2>
+<p>You need Windows 10 or 11 and Python 3.10 or newer, from <b>python.org</b>. When you install Python, tick <b>Add python.exe to PATH</b>.</p>
+<ol class="stappen">
+<li>Unpack the program into its own folder, for example in Documents.</li>
+<li>Open that folder in File Explorer, type <b>cmd</b> in the address bar and press Enter.</li>
+<li>Type <code>py -m pip install -r requirements.txt</code> once and press Enter.</li>
+<li>Start the program with <code>py korad_paneel.py</code>.</li>
+</ol>
+<p>The first time, the program follows the Windows language. If that is not Dutch or German, it starts in English. You choose the language and the appearance under [[Instellingen]] (chapter {ref:instellingen}).</p>
+<h3 id="demo">Trying it without a supply</h3>
+<p>In the port list at the top right, choose <b>DEMO</b> and click [[blauw:Verbinden]], or start with <code>py korad_paneel.py --demo</code>. The program then restarts with a simulated supply and a small simulated load. The title bar shows <b>DEMO</b>.</p>
+<p>The demo does not open any COM port. Readings from the demo are not real and stay in a separate folder, apart from your own projects and measurements.</p>
+</section>
+
+<section id="verbinden"><h2>Connecting to the supply</h2>
+<ol class="stappen">
+<li>Turn the supply on and connect the USB cable.</li>
+<li>Choose the COM port at the top right. If it is not listed, click the round arrow next to it.</li>
+<li>Click [[blauw:Verbinden]]. The dot turns green, the model appears at the top and the meters start running.</li>
+</ol>
+<p>On first use, with nothing connected to the terminals, check that the readings match the display of the supply.</p>
+<div class="kader"><div class="kop">Good to know</div>
+<p>A COM port can only be used by one program at a time. So first close any other programs that talk to the supply.</p>
+<p>If the output was already on when you connected, the program asks whether it should be turned off. Choose <b>Yes</b> if you are not sure what is connected to it.</p></div>
+<h3>Which supplies</h3>
+<p>The program reads the model from the supply and adjusts its range to match. It recognizes the Korad KA and KD series of 30 and 60 V and the identical models from Tenma, Velleman, RND and Stamos. Only the KA3005PS has actually been tested. Supplies with two channels, such as the KA3305P, do not work. The full list is in the README.</p>
+<h3>An unknown model</h3>
+<p>If the device answers like a Korad but the program does not know the model, you get a warning. If you choose to connect anyway, you enter the maximum shown on the rating plate. The program never goes above it and remembers it for next time.</p>
+@@smal bereik | For an unknown model, enter the range from the rating plate.
+</section>
+
+<section id="hoofdvenster"><h2>The main window</h2>
+<p>Everything you need day to day is in one window.</p>
+@@plaat hoofd_aan | The main window while the output is on.
+<ol class="callouts">
+<li><b>Status bar.</b> The color and the word tell you what the output is doing.</li>
+<li><b>Column.</b> Bench mode, Mini window, projects, current fingerprint, tools, workbook and settings.</li>
+<li><b>Project.</b> How high the voltage and current limit may go. Click to switch.</li>
+<li><b>Connection.</b> The COM port and the button to connect.</li>
+<li><b>Meters.</b> Voltage, current and power as measured by the supply.</li>
+<li><b>Status.</b> The lights and the button for the guards.</li>
+<li><b>Usage.</b> Charge, energy and the current in the chart.</li>
+<li><b>Chart.</b> Voltage and current over time.</li>
+<li><b>Set.</b> Voltage, current limit, output and memories.</li>
+<li><b>Battery simulation</b> and test programs.</li>
+<li><b>Note and log.</b> Place a marker and save readings.</li>
+</ol>
+</section>
+
+<section id="instellen"><h2>Setting the voltage and current limit</h2>
+<ol class="stappen">
+<li>Enter the voltage in ((Spanning)). You can use a comma or a point.</li>
+<li>In ((Stroomgrens)), enter the most current that may flow.</li>
+<li>Press Enter or click [[blauw:Instellen]]. The program sends the current limit first and then the voltage.</li>
+<li>Click [[Uitgang aanzetten]]. That button turns green and also turns the output off again afterwards.</li>
+</ol>
+<p>The four buttons at ((Geheugen)) recall fixed combinations; the button shows what is stored in it.</p>
+<div class="kader let-op"><div class="kop">Caution</div><p>If you want to raise the voltage while the output is on, the program asks first whether that is OK: the higher voltage goes straight to whatever is connected.</p></div>
+</section>
+
+<section id="projecten" class="vervolg"><h2>Projects and limits</h2>
+<p>A project is the limit the program guards, with its own color. You see the color on the button at the top and next to the title of every window. Within a project, the program refuses anything above the limit: when setting values, with the memory buttons, in test programs and in battery simulation.</p>
+<p>The program starts with one project, <b>{{VRIJ}}</b>, which allows the full range of the supply. Create a separate project with a safe limit for each circuit.</p>
+<h3>Creating a project</h3>
+<ol class="stappen">
+<li>Click [[Projecten]] on the left and click an existing project.</li>
+<li>Enter the name, the highest voltage, the highest current and the reason, and choose a color.</li>
+<li>Click [[Als nieuw project toevoegen]]. [[groen:Opslaan]] would overwrite the project you clicked.</li>
+<li>Click [[blauw:Dit project kiezen]].</li>
+</ol>
+@@ projecten | Each project has its own limit, color, memories and guards.
+<p>Set the memory buttons and the guards the way you want, then click [[Geheugens en bewaking van nu bewaren]]. When you choose the project, you get those values back.</p>
+<h3>When the limit is exceeded</h3>
+<p>The supply can also be set higher from its front panel. If that happens while the output is on, the program turns the output off within one or two seconds and raises an alarm. The alarm stays until you clear it in the status box.</p>
+<p>If a new project may go higher than the current one, the program first asks whether everything connected can handle that. A damaged project file is ignored and so can never raise a limit.</p>
+</section>
+
+<section id="meters"><h2>Meters, lights and usage</h2>
+<h3>The status bar</h3>
+<table><tr><th>Color</th><th>Meaning</th></tr>
+<tr><td class="nw"><b>Gray</b></td><td>Not connected, or the output is off.</td></tr>
+<tr><td class="nw"><b>Green</b></td><td>The output is on at constant voltage.</td></tr>
+<tr><td class="nw"><b>Amber</b></td><td>The supply is limiting the current.</td></tr>
+<tr><td class="nw"><b>Blinking red</b></td><td>An alarm or emergency stop, with the message shown.</td></tr></table>
+<h3>The ring meters</h3>
+<p>The number in the middle is what the supply is measuring now. The white mark on the ring is the set voltage or the current limit. The red section outside the current ring starts just below the current limit: when the ring gets there, the supply is about to start limiting. The red zone on the voltage ring is everything above the project limit.</p>
+<h3>The lights</h3>
+<table><tr><th>Light</th><th>Meaning</th></tr>
+<tr><td class="nw"><b>CV</b></td><td>Normal. The supply holds the voltage steady and the load takes what it needs.</td></tr>
+<tr><td class="nw"><b>CC</b></td><td>The load wants more than the current limit. The supply holds the current back and the voltage drops. A brief flash at switch-on is normal. If it stays on with a new circuit, turn the output off and look for the cause.</td></tr>
+<tr><td class="nw"><b>((Uitgang aan))</b></td><td>There is voltage on the terminals.</td></tr>
+<tr><td class="nw"><b>((Bewaking actief))</b></td><td>Green: at least one guard rule is on. Red: there is an alarm.</td></tr></table>
+<h3>Usage and current in view</h3>
+<p>The box at the top right counts the charge (mAh) and energy (Wh) since the counter was last reset. Below that are the highest, average and lowest current over exactly the section shown in the chart. If you zoom in, the box calculates only that section.</p>
+</section>
+
+<section id="grafiek"><h2>The chart</h2>
+<p>The red line is the voltage, the yellow line the current. Above the chart are numbered flags: notes, steps, results and notifications. Move the mouse over a flag to see the text.</p>
+<table><tr><th>What you want</th><th>How</th></tr>
+<tr><td>See more or less time</td><td>The buttons at the top right of the chart.</td></tr>
+<tr><td>Zoom in on a section</td><td>Drag the mouse over that section.</td></tr>
+<tr><td>Zoom in and out around a point</td><td>Scroll wheel over the chart.</td></tr>
+<tr><td>Back to live</td><td>Double-click in the chart.</td></tr>
+<tr><td>Read a value</td><td>Hold the mouse over the chart.</td></tr>
+<tr><td>Make a note</td><td>Enter text in ((Notitie)) and press Enter or [[Markering plaatsen]].</td></tr></table>
+<table><tr><th>Flag color</th><th>Type</th></tr>
+<tr><td class="nw">Green</td><td>A check that passed.</td></tr>
+<tr><td class="nw">Red</td><td>An error, alarm or emergency stop.</td></tr>
+<tr><td class="nw">Blue</td><td>Something the program noticed itself, such as a restart.</td></tr>
+<tr><td class="nw">Gray or white</td><td>Steps and your own notes.</td></tr></table>
+<p>The program remembers more than twenty hours of readings. If you want to keep them, start a log.</p>
+</section>
+
+<section id="bewaking" class="vervolg"><h2>Guards</h2>
+<p>With [[Bewaking instellen]] you create up to three rules that the program checks at every reading while the output is on. A rule reads like a sentence: <i>current above 300 mA for longer than 5 s, then output off</i>. You choose current, voltage or power, above or below, the value, how long, and whether the output should turn off or you only want a warning.</p>
+@@smal bewaking | Guard rules work alongside the supply's current limit.
+</section>
+
+<section id="loggen"><h2>Logging and reports</h2>
+<h3>Keeping a log</h3>
+<p>Click [[Log starten]] at the bottom right and choose a name. Every reading then goes into a CSV file as a line, along with the markers. You can view an old log with [[Log openen]] above the chart.</p>
+<h3>Creating a report</h3>
+<p>Zoom the chart in on the section you want to record and click [[Rapport maken]]. Give it a title and, if you like, a comment. The report opens in the browser; with Ctrl+P and <i>Save as PDF</i> you turn it into a PDF.</p>
+<h3>Battery simulation</h3>
+<p>On the second row at the bottom, you can make the voltage change slowly, as with a battery running down. Enter the start and end voltage and the duration and click [[Start]].</p>
+<p>With <b>R</b> you simulate the internal resistance, in milliohms: the program then keeps setting the voltage to the source voltage minus current times R. This shows whether a circuit keeps working when the voltage sags under load. The simulated battery stops when you set something yourself.</p>
+</section>
+
+<section id="programmas"><h2>Test programs</h2>
+<p>A test program is a series of steps the supply runs through automatically. Open the window with [[Testprogramma's]] at the bottom right.</p>
+@@ programmas | A test program with steps and expected results.
+<p>For each step you choose the transition (<i>step</i> or <i>ramp</i>), the voltage, the current limit, whether the output is on or off, and the duration. You can also enter an expected result: the average current must then be between two limits. At the end you see <b>pass</b> or <b>fail</b> for each step.</p>
+<p>After [[groen:Starten]] the program states the number of steps, the duration and the highest voltage, and asks whether it may go ahead. A program that goes above the project limit anywhere does not start. The steps appear as bands in the chart. Esc or the stop button stops it immediately; the output then turns off.</p>
+</section>
+
+<section id="gereedschap"><h2>Tools</h2>
+<p>The [[Gereedschap]] button in the column on the left opens all the tools. Click a tile to open it.</p>
+@@ gereedschap | All the tools in one place.
+<h3>Startup curve</h3>
+<p>You would rather not put a new circuit straight on full voltage. The startup curve raises the voltage in small steps from 0 and plots the current. A fault then shows up at just a few volts. At the current limit the program stops and the output turns off.</p>
+@@ opstartcurve_uitslag | Below the chart, it says in plain language what you can see.
+<p>If all goes well, the output stays on at the end voltage. The gray lines are the previous measurements, so you can see what a change does to the curve.</p>
+</section>
+
+<section id="onderdelen"><h2>Component tester</h2>
+<p>The supply as a measuring instrument for a single component. At the top, choose what you are measuring; the drawing shows how to connect it between the terminals. Click [[blauw:Meten]] and confirm that only the loose component is connected. The output turns on briefly with a low current limit and then your own settings are restored.</p>
+<table><tr><th>Type</th><th>Supply</th><th>What you find out</th></tr>
+<tr><td class="nw"><b>Diode or LED</b></td><td class="nw">5 V, 10 mA</td><td>The forward voltage and the type: Schottky, ordinary diode or the color of an LED. No current: it is the wrong way round.</td></tr>
+<tr><td class="nw"><b>Resistor</b></td><td class="nw">1 V, 100 mA</td><td>The value, good from about 1 to 200 Ω and accurate to within a few percent.</td></tr></table>
+@@ onderdeel_uitslag | The scale shows which zone the reading falls in.
+<div class="kader let-op"><div class="kop">Loose components only</div><p>Never connect a whole circuit during a component measurement.</p></div>
+</section>
+
+<section id="afdruk"><h2>Current fingerprint and restart counter</h2>
+<p>A working board starts up the same way every time. The current fingerprint saves that pattern, so at the next start you see right away whether a new board or new firmware differs.</p>
+<ol class="stappen">
+<li>Connect a board you know is good, turn the output on and wait until it has started up.</li>
+<li>Click the current fingerprint button on the left, enter a name and save the last start as a new fingerprint.</li>
+<li>Turn the output off and on again and add that start to the fingerprint. The more starts, the more realistic the band.</li>
+<li>Choose the fingerprint and turn it on.</li>
+</ol>
+<p>At every following start, the program tracks the current against the band, and the box with the current shows what percentage falls within it. At 95 percent or more, that counts as good. The current fingerprint only warns; the output stays as it is.</p>
+@@ afdruk | A saved current fingerprint.
+<h3>Restart counter</h3>
+<p>A board that keeps restarting shows it in the current: a short dip and then back to the normal level. The program counts those dips. If they are regular, the time between them is shown too.</p>
+</section>
+
+<section id="nachttest"><h2>Overnight test and comparing logs</h2>
+<h3>Overnight test</h3>
+<p>Some faults only appear now and then. The overnight test measures for hours on end and records everything. Enter the duration, the voltage, the current limit and the notification limit and click [[blauw:Start]]. The output turns on and a log starts.</p>
+<p>Current peaks, current limiting and an output turning off appear as markers in the chart and, if notifications are on, on your phone. At the end the program creates a report automatically. Keep the computer on for that time and do not let it go to sleep.</p>
+<h3>Compare logs</h3>
+<p>Lay two logs over each other, for example the usage before and after a firmware update. Choose measurement A and B, and above the chart choose what you want to see. The table below gives the values and the difference per measurement, also in percentages.</p>
+@@ vergelijken_uitslag | Two logs overlaid, with the differences in a table.
+</section>
+
+<section id="werkboek"><h2>Workbook</h2>
+<p>Everything you do with the program goes into the workbook automatically, so you can find later what you measured and when. Choose a type or enter a search term. Double-click a line to load a log into the chart or open a report. With [[Notitie toevoegen]] you can add something yourself.</p>
+@@ werkboek | The workbook puts everything in date order.
+</section>
+
+<section id="werkbank"><h2>Bench mode, Mini window and sound</h2>
+<p><b>Bench mode.</b> With <b>F11</b> the whole screen becomes a display with huge numbers and a large off button. <b>F11</b> again brings you back.</p>
+@@ werkbank | Bench mode is easy to read from a distance.
+<p><b>Mini window.</b> A small window that always stays on top, with voltage, current and an off button. Double-click the numbers to bring back the large window.</p>
+<p><b>Sound.</b> If the supply limits for longer than half a second, you hear a short double beep. You can turn this off under [[Instellingen]].</p>
+<p><b>Spoken notifications.</b> The program can say what is happening. Turn this on under [[Instellingen]] and try it with [[Laat horen]]. If the voice for your language is missing, add it in the Windows settings, under <i>Time &amp; language</i> and <i>Speech</i>.</p>
+</section>
+
+<section id="telefoon"><h2>Phone and notifications</h2>
+<h3>Phone as remote control</h3>
+<ol class="stappen">
+<li>Open [[Gereedschap]], then ((Telefoon)), and click [[blauw:Aanzetten]].</li>
+<li>The first time, Windows asks whether Python may accept connections. Choose <b>Private networks</b>.</li>
+<li>Scan the QR code with your phone. It must be on the same Wi-Fi network.</li>
+</ol>
+<p>On the phone you see the meters and the chart, and you can place a marker.</p>
+<div class="kader"><div class="kop">Safe</div><p>From the phone the output can only be turned <b>off</b>. Turning it on or changing the voltage is only possible on the computer. The link contains a code that works like a password; with [[Nieuwe code]] old links stop working.</p></div>
+<h3>Notifications via ntfy</h3>
+<ol class="stappen">
+<li>Install the free <b>ntfy</b> app on your phone.</li>
+<li>Make up a long name that nobody can guess, and subscribe to it in the app.</li>
+<li>Enter that name under [[Instellingen]], turn the notifications on and click [[Testmelding sturen]].</li>
+</ol>
+<p>You get a message on an alarm, when a test program or overnight test finishes, and when the supply becomes unreachable while the output is on. Anyone who knows that name can read your notifications, so treat it like a password.</p>
+</section>
+
+<section id="instellingen"><h2>Settings and your data</h2>
+<p>Under [[Instellingen]] you choose the language, the light or dark appearance, the sound, the spoken notifications and the notifications on your phone. After you change the language or appearance, the program offers to restart.</p>
+@@ instellingen | Language, appearance, sound and notifications in one place.
+<h3>Where your data is</h3>
+<p>Everything you create stays on your own computer, in <code>%APPDATA%\CurrentBench</code>. There you will find your projects, logs, reports, test programs and the workbook. [[Gegevensmap openen]] takes you there. Make a backup of it yourself from time to time.</p>
+<p>If you want to keep everything next to the program, for example on a USB stick, put an empty file <code>portable.txt</code> next to <code>korad_paneel.py</code>.</p>
+</section>
+
+<section id="scripts" class="vervolg"><h2>Local API</h2>
+<p>With the local API, scripts can take measurements through the program while it simply stays open. It is off by default; you turn it on under [[Instellingen]]. The local API can only be reached on this computer and requires a code from the settings.</p>
+<table><tr><th>Command</th><th>What it does</th></tr>
+<tr><td class="nw"><code>py korad_klant.py stand</code></td><td>What the supply is doing now.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py zet 5 0.5</code></td><td>First the current limit, then the voltage.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py aan --akkoord</code></td><td>Output on.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py uit</code></td><td>Output off.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py acties</code></td><td>All available commands.</td></tr></table>
+<p>Scripts have the same limits as the buttons. Turning the output on or raising the voltage requires explicit approval, and you always answer questions on the screen yourself.</p>
+</section>
+
+<section id="vangnet"><h2>Closing and the safety net</h2>
+<table><tr><th>What happens</th><th>What the program does</th></tr>
+<tr><td><b>Closing with the output on</b></td><td>It asks what should happen: turn the output off and close, leave the output on and close, or stay open. If you leave it on, nobody is guarding it any more.</td></tr>
+<tr><td><b>A bug in the program</b></td><td>A running test stops, the output turns off and you get a message. The details are in <code>korad_fouten.log</code> in your data folder.</td></tr>
+<tr><td><b>USB disconnected or supply off</b></td><td>It reports that the connection is lost and stops whatever was running. It can then no longer control the output; the supply's current limit keeps working.</td></tr></table>
+</section>
+
+<section id="problemen"><h2>If something does not work</h2>
+<table><tr><th style="width:38%">What you see</th><th>What you do</th></tr>
+<tr><td>"((Kan poort niet openen))"</td><td>Another program is using the port. Close it and connect again.</td></tr>
+<tr><td>"((Geen Korad gevonden))"</td><td>Wrong port, or the supply is off. Turn it on and choose the right port.</td></tr>
+<tr><td>The port is not in the list</td><td>Check the USB cable, turn the supply on and click the round arrow. Sometimes Windows still has to install a driver.</td></tr>
+<tr><td>"((Onbekend model))"</td><td>See chapter {ref:verbinden}. Please report your model on GitHub so it can be added to the list.</td></tr>
+<tr><td>"((Buiten bereik))" or a refusal</td><td>The value is higher than the limit allows. Choose a lower value or another project.</td></tr>
+<tr><td>The CC light stays on</td><td>The load is drawing more than the current limit. Turn the output off and look for the cause.</td></tr>
+<tr><td>The lights are wrong</td><td>Some models report their state differently. Compare with the display of the supply and report it on GitHub.</td></tr>
+<tr><td>No notifications on the phone</td><td>Is the name exactly right? Capitals matter. Try [[Testmelding sturen]].</td></tr>
+<tr><td>Phone cannot connect</td><td>Is it on the same Wi-Fi network, is control turned on and has Windows allowed access?</td></tr>
+<tr><td>Spoken notifications are silent</td><td>Add the voice for your language in Windows and open [[Instellingen]] again.</td></tr>
+<tr><td>Script: not reachable</td><td>Is the program running, and is the local API turned on under [[Instellingen]]?</td></tr>
+<tr><td>Icons are squares</td><td>The font Segoe MDL2 Assets is missing; it should be present on Windows 10 and 11.</td></tr>
+<tr><td>The program does not start</td><td>Start it from the command prompt with <code>py korad_paneel.py</code>, and you will see the error message.</td></tr></table>
+<h3>About this program</h3>
+<p>{{NAAM}} is a free, non-commercial hobby project, published under the MIT licence and without any warranty. It is unofficial and not affiliated with Korad or any of the other brands mentioned. Idea and direction by Ronny Hullegie; the code was written by Claude (Anthropic). Bugs and improvements are welcome on GitHub, but support is not promised.</p>
+</section>

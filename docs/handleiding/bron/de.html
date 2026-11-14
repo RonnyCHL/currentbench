@@ -1,0 +1,266 @@
+<section id="veiligheid"><h2>Sicherheit zuerst</h2>
+<p>{{NAAM}} bedient ein echtes Netzgerät. Eine falsche Einstellung kann eine Schaltung beschädigen, und ein Fehler in einem Programm oder ein loses USB-Kabel kann immer passieren. Benutze das Programm auf eigenes Risiko.</p>
+<div class="kader let-op"><div class="kop">Der echte Schutz steckt im Netzgerät</div>
+<p>Die Stromgrenze am Netzgerät wirkt immer, auch wenn das Programm geschlossen ist oder abstürzt. Stelle sie deshalb immer passend ein und verlasse dich nie nur auf das Programm. Fällt das Programm aus, während der Ausgang an ist, dann bleibt der Ausgang einfach an.</p></div>
+<h3>Vier Gewohnheiten</h3>
+<ol class="stappen">
+<li>Erst die Stromgrenze, dann die Spannung, und erst danach den Ausgang einschalten.</li>
+<li>Beginne bei etwas Neuem mit einer niedrigen Stromgrenze, zum Beispiel 0,1 A, und achte darauf, ob das Netzgerät begrenzt.</li>
+<li>Prüfe die Polarität: rote Klemme Plus, schwarze Klemme Minus.</li>
+<li>Schalte den Ausgang aus, wenn du fertig bist und bevor du etwas anschließt oder abklemmst.</li>
+</ol>
+<div class="kader"><div class="kop">Not-Aus</div><p>Die <b>Esc</b>-Taste schaltet den Ausgang sofort aus, in jedem Fenster des Programms. Alles, was läuft, stoppt dann auch.</p></div>
+<p>So liest du dieses Handbuch: Tasten stehen im Text als [[Gereedschap]], [[blauw:Instellen]], [[groen:Opslaan]] oder [[rood:Stop]]. Die Beispielbilder wurden mit einem simulierten Netzgerät gemacht; bei dir stehen dort deine eigenen Werte.</p>
+</section>
+
+<section id="installeren"><h2>Installieren und starten</h2>
+<p>Du brauchst Windows 10 oder 11 und Python 3.10 oder neuer, von <b>python.org</b>. Setze bei der Installation von Python das Häkchen bei <b>Add python.exe to PATH</b>.</p>
+<ol class="stappen">
+<li>Entpacke das Programm in einen eigenen Ordner, zum Beispiel in Dokumente.</li>
+<li>Öffne diesen Ordner im Datei-Explorer, tippe <b>cmd</b> in die Adressleiste und drücke Enter.</li>
+<li>Tippe einmal <code>py -m pip install -r requirements.txt</code> und drücke Enter.</li>
+<li>Starte das Programm mit <code>py korad_paneel.py</code>.</li>
+</ol>
+<p>Beim ersten Mal folgt das Programm der Sprache von Windows. Ist das weder Niederländisch noch Deutsch, startet es auf Englisch. Die Sprache und die Darstellung wählst du bei [[Instellingen]] (Kapitel {ref:instellingen}).</p>
+<h3 id="demo">Ausprobieren ohne Netzgerät</h3>
+<p>Wähle in der Portliste oben rechts <b>DEMO</b> und klicke auf [[blauw:Verbinden]], oder starte mit <code>py korad_paneel.py --demo</code>. Das Programm startet dann neu mit einem simulierten Netzgerät und einer kleinen simulierten Last. In der Titelleiste steht <b>DEMO</b>.</p>
+<p>Die Demo öffnet keinen COM-Port. Messungen aus der Demo sind nicht echt und bleiben in einem eigenen Ordner, getrennt von deinen eigenen Projekten und Messungen.</p>
+</section>
+
+<section id="verbinden"><h2>Mit dem Netzgerät verbinden</h2>
+<ol class="stappen">
+<li>Schalte das Netzgerät ein und schließe das USB-Kabel an.</li>
+<li>Wähle oben rechts den COM-Port. Steht er nicht dabei, klicke auf den runden Pfeil daneben.</li>
+<li>Klicke auf [[blauw:Verbinden]]. Der Punkt wird grün, das Modell erscheint oben und die Anzeigen laufen los.</li>
+</ol>
+<p>Prüfe bei der ersten Benutzung mit freien Klemmen, ob die Messwerte mit dem Display des Netzgeräts übereinstimmen.</p>
+<div class="kader"><div class="kop">Gut zu wissen</div>
+<p>Ein COM-Port kann immer nur von einem Programm gleichzeitig benutzt werden. Schließe also zuerst andere Programme, die mit dem Netzgerät sprechen.</p>
+<p>War der Ausgang schon an, als du verbunden hast, fragt das Programm, ob er ausgehen soll. Wähle <b>Ja</b>, wenn du nicht sicher bist, was daran hängt.</p></div>
+<h3>Welche Netzgeräte</h3>
+<p>Das Programm liest das Modell aus dem Netzgerät und passt seinen Bereich daran an. Erkannt werden die Korad KA- und KD-Serie mit 30 und 60 V und die gleichen Modelle von Tenma, Velleman, RND und Stamos. Nur das KA3005PS wurde wirklich getestet. Netzgeräte mit zwei Kanälen, wie das KA3305P, funktionieren nicht. Die vollständige Liste steht in der README.</p>
+<h3>Ein unbekanntes Modell</h3>
+<p>Antwortet das Gerät wie ein Korad, aber das Programm kennt das Modell nicht, bekommst du eine Warnung. Entscheidest du dich, trotzdem zu verbinden, trägst du das Maximum ein, das auf dem Typenschild steht. Das Programm geht nie darüber hinaus und merkt es sich für das nächste Mal.</p>
+@@smal bereik | Bei einem unbekannten Modell trägst du den Bereich vom Typenschild ein.
+</section>
+
+<section id="hoofdvenster"><h2>Das Hauptfenster</h2>
+<p>Alles, was du täglich brauchst, steht in einem Fenster.</p>
+@@plaat hoofd_aan | Das Hauptfenster, während der Ausgang an ist.
+<ol class="callouts">
+<li><b>Statusleiste.</b> Farbe und Wort sagen, was der Ausgang macht.</li>
+<li><b>Spalte.</b> Werkbankmodus, Mini-Fenster, Projekte, Strom-Fingerabdruck, Werkzeuge, Werkbuch und Einstellungen.</li>
+<li><b>Projekt.</b> Wie hoch Spannung und Stromgrenze sein dürfen. Klicke zum Wechseln.</li>
+<li><b>Verbindung.</b> Der COM-Port und die Taste zum Verbinden.</li>
+<li><b>Anzeigen.</b> Spannung, Strom und Leistung, wie das Netzgerät sie misst.</li>
+<li><b>Status.</b> Die Lämpchen und die Taste für die Überwachung.</li>
+<li><b>Verbrauch.</b> Ladung, Energie und der Strom im Diagramm.</li>
+<li><b>Diagramm.</b> Spannung und Strom über die Zeit.</li>
+<li><b>Einstellen.</b> Spannung, Stromgrenze, Ausgang und Speicher.</li>
+<li><b>Akku-Simulation</b> und Testprogramme.</li>
+<li><b>Notiz und Log.</b> Eine Markierung setzen und Messungen speichern.</li>
+</ol>
+</section>
+
+<section id="instellen"><h2>Spannung und Stromgrenze einstellen</h2>
+<ol class="stappen">
+<li>Trage bei ((Spanning)) die Spannung ein. Komma oder Punkt sind beide erlaubt.</li>
+<li>Trage bei ((Stroomgrens)) ein, wie viel Strom höchstens fließen darf.</li>
+<li>Drücke Enter oder klicke auf [[blauw:Instellen]]. Das Programm sendet zuerst die Stromgrenze und danach die Spannung.</li>
+<li>Klicke auf [[Uitgang aanzetten]]. Diese Taste wird grün und schaltet den Ausgang danach auch wieder aus.</li>
+</ol>
+<p>Die vier Tasten bei ((Geheugen)) rufen feste Kombinationen ab; auf der Taste steht, was darin gespeichert ist.</p>
+<div class="kader let-op"><div class="kop">Achtung</div><p>Willst du die Spannung erhöhen, während der Ausgang an ist, fragt das Programm zuerst, ob das in Ordnung ist: Die höhere Spannung liegt sofort an dem an, was angeschlossen ist.</p></div>
+</section>
+
+<section id="projecten" class="vervolg"><h2>Projekte und Grenzen</h2>
+<p>Ein Projekt ist die Grenze, die das Programm überwacht, mit einer eigenen Farbe. Die Farbe siehst du auf der Taste oben und neben dem Titel jedes Fensters. Innerhalb eines Projekts lehnt das Programm alles über der Grenze ab: beim Einstellen, bei den Speichertasten, in Testprogrammen und bei der Akku-Simulation.</p>
+<p>Das Programm beginnt mit einem Projekt, <b>{{VRIJ}}</b>, das den vollen Bereich des Netzgeräts erlaubt. Lege für jede Schaltung ein eigenes Projekt mit einer sicheren Grenze an.</p>
+<h3>Ein Projekt anlegen</h3>
+<ol class="stappen">
+<li>Klicke links auf [[Projecten]] und klicke ein vorhandenes Projekt an.</li>
+<li>Trage den Namen, die höchste Spannung, den höchsten Strom und den Grund ein und wähle eine Farbe.</li>
+<li>Klicke auf [[Als nieuw project toevoegen]]. [[groen:Opslaan]] würde dagegen das angeklickte Projekt überschreiben.</li>
+<li>Klicke auf [[blauw:Dit project kiezen]].</li>
+</ol>
+@@ projecten | Grenze, Farbe, Speicher und Überwachung hat jedes Projekt für sich.
+<p>Stelle die Speichertasten und die Überwachung so ein, wie du willst, und klicke dann auf [[Geheugens en bewaking van nu bewaren]]. Beim Wählen des Projekts bekommst du diese Werte zurück.</p>
+<h3>Wenn die Grenze überschritten wird</h3>
+<p>Das Netzgerät kann auch an der Vorderseite höher eingestellt werden. Passiert das, während der Ausgang an ist, schaltet das Programm den Ausgang innerhalb von ein oder zwei Sekunden aus und gibt einen Alarm. Der bleibt stehen, bis du ihn im Statusfeld löschst.</p>
+<p>Darf ein neues Projekt höher als das aktuelle, fragt das Programm zuerst, ob alles, was angeschlossen ist, das verträgt. Eine beschädigte Projektdatei wird ignoriert und kann eine Grenze also nie erhöhen.</p>
+</section>
+
+<section id="meters"><h2>Anzeigen, Lämpchen und Verbrauch</h2>
+<h3>Die Statusleiste</h3>
+<table><tr><th>Farbe</th><th>Bedeutung</th></tr>
+<tr><td class="nw"><b>Grau</b></td><td>Nicht verbunden, oder der Ausgang ist aus.</td></tr>
+<tr><td class="nw"><b>Grün</b></td><td>Der Ausgang ist an, mit fester Spannung.</td></tr>
+<tr><td class="nw"><b>Gelb</b></td><td>Das Netzgerät begrenzt den Strom.</td></tr>
+<tr><td class="nw"><b>Rot blinkend</b></td><td>Ein Alarm oder Not-Aus, mit der Meldung dazu.</td></tr></table>
+<h3>Die Ringanzeigen</h3>
+<p>Die Zahl in der Mitte ist das, was das Netzgerät gerade misst. Der weiße Strich auf dem Ring ist die eingestellte Spannung oder die Stromgrenze. Das rote Stück außerhalb des Stromrings beginnt knapp unter der Stromgrenze: Kommt der Ring dorthin, begrenzt das Netzgerät gleich. Die rote Zone beim Spannungsring ist alles über der Grenze des Projekts.</p>
+<h3>Die Lämpchen</h3>
+<table><tr><th>Lämpchen</th><th>Bedeutung</th></tr>
+<tr><td class="nw"><b>CV</b></td><td>Normal. Das Netzgerät hält die Spannung fest und die Last nimmt sich, was sie braucht.</td></tr>
+<tr><td class="nw"><b>CC</b></td><td>Die Last will mehr als die Stromgrenze. Das Netzgerät hält den Strom zurück und die Spannung sinkt. Kurzes Aufleuchten beim Einschalten ist normal. Leuchtet es bei einer neuen Schaltung weiter, schalte den Ausgang aus und suche die Ursache.</td></tr>
+<tr><td class="nw"><b>((Uitgang aan))</b></td><td>An den Klemmen liegt Spannung.</td></tr>
+<tr><td class="nw"><b>((Bewaking actief))</b></td><td>Grün: Mindestens eine Überwachungsregel ist aktiv. Rot: Es gibt einen Alarm.</td></tr></table>
+<h3>Verbrauch und Strom im Bild</h3>
+<p>Das Feld oben rechts zählt die Ladung (mAh) und Energie (Wh), seit der Zähler auf null ging. Darunter stehen der höchste, mittlere und niedrigste Strom über genau den Abschnitt, der im Diagramm steht. Zoomst du hinein, rechnet das Feld nur diesen Abschnitt.</p>
+</section>
+
+<section id="grafiek"><h2>Das Diagramm</h2>
+<p>Die rote Linie ist die Spannung, die gelbe Linie der Strom. Über dem Diagramm stehen nummerierte Fähnchen: Notizen, Schritte, Ergebnisse und Meldungen. Fahre mit der Maus über ein Fähnchen, um den Text zu sehen.</p>
+<table><tr><th>Was du willst</th><th>Wie</th></tr>
+<tr><td>Mehr oder weniger Zeit sehen</td><td>Die Tasten oben rechts am Diagramm.</td></tr>
+<tr><td>In einen Abschnitt hineinzoomen</td><td>Mit der Maus über diesen Abschnitt ziehen.</td></tr>
+<tr><td>Um einen Punkt herum ein- und auszoomen</td><td>Mausrad über dem Diagramm.</td></tr>
+<tr><td>Zurück zu Live</td><td>Doppelklick ins Diagramm.</td></tr>
+<tr><td>Einen Wert ablesen</td><td>Die Maus über das Diagramm halten.</td></tr>
+<tr><td>Etwas notieren</td><td>Text bei ((Notitie)) eintragen und Enter oder [[Markering plaatsen]].</td></tr></table>
+<table><tr><th>Farbe des Fähnchens</th><th>Art</th></tr>
+<tr><td class="nw">Grün</td><td>Eine Prüfung, die gut ging.</td></tr>
+<tr><td class="nw">Rot</td><td>Ein Fehler, Alarm oder Not-Aus.</td></tr>
+<tr><td class="nw">Blau</td><td>Etwas, das das Programm selbst bemerkt hat, wie ein Neustart.</td></tr>
+<tr><td class="nw">Grau oder Weiß</td><td>Schritte und deine eigenen Notizen.</td></tr></table>
+<p>Das Programm merkt sich gut zwanzig Stunden an Messungen. Willst du sie aufbewahren, starte ein Log.</p>
+</section>
+
+<section id="bewaking" class="vervolg"><h2>Überwachung</h2>
+<p>Mit [[Bewaking instellen]] legst du bis zu drei Regeln an, die das Programm bei jeder Messung prüft, solange der Ausgang an ist. Eine Regel liest du wie einen Satz: <i>Strom über 300 mA länger als 5 s, dann Ausgang aus</i>. Du wählst Strom, Spannung oder Leistung, über oder unter, den Wert, wie lange und ob der Ausgang ausgehen soll oder ob du nur eine Warnung willst.</p>
+@@smal bewaking | Überwachungsregeln wirken neben der Stromgrenze des Netzgeräts.
+</section>
+
+<section id="loggen"><h2>Loggen und Berichte</h2>
+<h3>Ein Log führen</h3>
+<p>Klicke unten rechts auf [[Log starten]] und wähle einen Namen. Jede Messung kommt dann als Zeile in eine CSV-Datei, mit den Markierungen dazu. Ein altes Log siehst du dir mit [[Log openen]] über dem Diagramm an.</p>
+<h3>Einen Bericht erstellen</h3>
+<p>Zoome im Diagramm auf den Abschnitt, den du festhalten willst, und klicke auf [[Rapport maken]]. Gib einen Titel und eventuell eine Anmerkung ein. Der Bericht öffnet sich im Browser; mit Strg+P und <i>Als PDF speichern</i> machst du daraus ein PDF.</p>
+<h3>Akku-Simulation</h3>
+<p>In der zweiten Zeile unten lässt du die Spannung langsam ändern, wie bei einem Akku, der leer wird. Trage die Anfangs- und Endspannung und die Dauer ein und klicke auf [[Start]].</p>
+<p>Mit <b>R</b> simulierst du den Innenwiderstand, in Milliohm: Das Programm setzt die Spannung dann immer auf Quellspannung minus Strom mal R. So siehst du, ob eine Schaltung weiterläuft, wenn die Spannung unter Last einbricht. Der simulierte Akku stoppt, wenn du selbst etwas einstellst.</p>
+</section>
+
+<section id="programmas"><h2>Testprogramme</h2>
+<p>Ein Testprogramm ist eine Reihe von Schritten, die das Netzgerät von selbst durchläuft. Öffne das Fenster mit [[Testprogramma's]] unten rechts.</p>
+@@ programmas | Ein Testprogramm mit Schritten und Erwartungen.
+<p>Pro Schritt wählst du den Übergang (<i>Sprung</i> oder <i>Rampe</i>), die Spannung, die Stromgrenze, ob der Ausgang an oder aus ist und die Dauer. Du kannst auch eine Erwartung eintragen: Der mittlere Strom muss dann zwischen zwei Grenzen liegen. Am Ende siehst du pro Schritt <b>OK</b> oder <b>Fehler</b>.</p>
+<p>Nach [[groen:Starten]] nennt das Programm die Anzahl der Schritte, die Dauer und die höchste Spannung und fragt, ob es starten darf. Ein Testprogramm, das irgendwo über die Projektgrenze kommt, startet nicht. Die Schritte stehen als Bänder im Diagramm. Mit Esc oder der Stopp-Taste stoppst du sofort; der Ausgang geht dann aus.</p>
+</section>
+
+<section id="gereedschap"><h2>Werkzeuge</h2>
+<p>Die Taste [[Gereedschap]] in der Spalte links öffnet alle Hilfsmittel. Klicke auf eine Kachel, um sie zu öffnen.</p>
+@@ gereedschap | Alle Hilfsmittel an einem Ort.
+<h3>Anlaufkurve</h3>
+<p>Eine neue Schaltung setzt du lieber nicht sofort unter volle Spannung. Die Anlaufkurve lässt die Spannung in kleinen Schritten von 0 hochlaufen und zeichnet den Strom auf. Einen Fehler siehst du so schon bei wenigen Volt. Bei der Stromgrenze stoppt das Programm und der Ausgang geht aus.</p>
+@@ opstartcurve_uitslag | Unter dem Diagramm steht in einfachen Worten, was zu sehen ist.
+<p>Läuft alles gut, bleibt der Ausgang auf der Endspannung an. Die grauen Linien sind die vorigen Messungen, damit du siehst, was eine Änderung an der Kurve verändert.</p>
+</section>
+
+<section id="onderdelen"><h2>Bauteiltester</h2>
+<p>Das Netzgerät als Messgerät für ein einzelnes Bauteil. Wähle oben, was du misst; die Zeichnung zeigt, wie es zwischen die Klemmen kommt. Klicke auf [[blauw:Meten]] und bestätige, dass nur das einzelne Bauteil angeschlossen ist. Der Ausgang geht kurz mit einer niedrigen Stromgrenze an und danach kommen deine eigenen Einstellungen zurück.</p>
+<table><tr><th>Art</th><th>Netzgerät</th><th>Was du erfährst</th></tr>
+<tr><td class="nw"><b>Diode oder LED</b></td><td class="nw">5 V, 10 mA</td><td>Die Durchlassspannung und die Art: Schottky, normale Diode oder die Farbe einer LED. Kein Strom: Sie sitzt falsch herum.</td></tr>
+<tr><td class="nw"><b>Widerstand</b></td><td class="nw">1 V, 100 mA</td><td>Der Wert, geeignet für etwa 1 bis 200 Ω und auf wenige Prozent genau.</td></tr></table>
+@@ onderdeel_uitslag | Die Skala zeigt, in welcher Zone die Messung liegt.
+<div class="kader let-op"><div class="kop">Nur einzelne Bauteile</div><p>Schließe während einer Bauteilmessung nie eine ganze Schaltung an.</p></div>
+</section>
+
+<section id="afdruk"><h2>Strom-Fingerabdruck und Neustartzähler</h2>
+<p>Eine funktionierende Platine läuft jedes Mal gleich an. Der Strom-Fingerabdruck speichert diesen Verlauf, damit du beim nächsten Start sofort siehst, ob eine neue Platine oder neue Firmware abweicht.</p>
+<ol class="stappen">
+<li>Schließe eine Platine an, von der du weißt, dass sie gut ist, schalte den Ausgang ein und warte, bis sie angelaufen ist.</li>
+<li>Klicke links auf die Taste für den Strom-Fingerabdruck, trage einen Namen ein und speichere den letzten Start als neuen Abdruck.</li>
+<li>Schalte den Ausgang aus und wieder ein und füge diesen Start zum Abdruck hinzu. Je mehr Starts, desto realistischer das Band.</li>
+<li>Wähle den Abdruck und schalte ihn ein.</li>
+</ol>
+<p>Bei jedem weiteren Start vergleicht das Programm den Strom mit dem Band, und beim Feld mit dem Strom steht, wie viel Prozent darin liegen. Ab 95 Prozent gilt das als gut. Der Strom-Fingerabdruck warnt nur; der Ausgang bleibt, wie er ist.</p>
+@@ afdruk | Ein gespeicherter Strom-Fingerabdruck.
+<h3>Neustartzähler</h3>
+<p>Eine Platine, die immer wieder neu startet, zeigt das im Strom: ein kurzer Einbruch und dann wieder das normale Niveau. Das Programm zählt diese Einbrüche. Sind sie regelmäßig, steht die Zeit dazwischen dabei.</p>
+</section>
+
+<section id="nachttest"><h2>Nachttest und Logs vergleichen</h2>
+<h3>Nachttest</h3>
+<p>Manche Fehler kommen nur ab und zu. Der Nachttest misst stundenlang am Stück und schreibt alles auf. Trage die Dauer, die Spannung, die Stromgrenze und die Meldegrenze ein und klicke auf [[blauw:Start]]. Der Ausgang geht an und ein Log startet.</p>
+<p>Stromspitzen, Begrenzen und ein Ausgang, der ausgeht, kommen als Markierung ins Diagramm und, wenn Meldungen eingeschaltet sind, auf dein Telefon. Am Ende erstellt das Programm von selbst einen Bericht. Lass den Computer so lange eingeschaltet und versetze ihn nicht in den Energiesparmodus.</p>
+<h3>Logs vergleichen</h3>
+<p>Lege zwei Logs übereinander, zum Beispiel den Verbrauch vor und nach einem Firmware-Update. Wähle Messung A und B und über dem Diagramm, was du sehen willst. Die Tabelle darunter zeigt pro Messung die Werte und die Differenz, auch in Prozent.</p>
+@@ vergelijken_uitslag | Zwei Logs übereinander, mit den Unterschieden in einer Tabelle.
+</section>
+
+<section id="werkboek"><h2>Werkbuch</h2>
+<p>Alles, was du mit dem Programm machst, landet von selbst im Werkbuch, damit du später wiederfindest, was du wann gemessen hast. Wähle eine Art oder tippe einen Suchbegriff ein. Doppelklicke auf eine Zeile, um ein Log ins Diagramm zu laden oder einen Bericht zu öffnen. Mit [[Notitie toevoegen]] schreibst du selbst etwas dazu.</p>
+@@ werkboek | Das Werkbuch ordnet alles nach Datum.
+</section>
+
+<section id="werkbank"><h2>Werkbankmodus, Mini-Fenster und Ton</h2>
+<p><b>Werkbankmodus.</b> Mit <b>F11</b> wird der ganze Bildschirm zu einer Anzeige mit riesigen Zahlen und einer großen Aus-Taste. Noch einmal <b>F11</b> bringt dich zurück.</p>
+@@ werkbank | Der Werkbankmodus ist auch aus der Entfernung gut lesbar.
+<p><b>Mini-Fenster.</b> Ein kleines Fenster, das immer oben bleibt, mit Spannung, Strom und einer Aus-Taste. Doppelklicke auf die Zahlen, um das große Fenster zurückzuholen.</p>
+<p><b>Ton.</b> Begrenzt das Netzgerät länger als eine halbe Sekunde, ertönt ein kurzer doppelter Piepton. Ausschalten kannst du das bei [[Instellingen]].</p>
+<p><b>Gesprochene Meldungen.</b> Das Programm kann sagen, was passiert. Schalte das bei [[Instellingen]] ein und probiere es mit [[Laat horen]] aus. Fehlt die Stimme für deine Sprache, füge sie in den Windows-Einstellungen hinzu, unter <i>Zeit und Sprache</i> und <i>Spracherkennung</i>.</p>
+</section>
+
+<section id="telefoon"><h2>Telefon und Meldungen</h2>
+<h3>Telefon als Fernbedienung</h3>
+<ol class="stappen">
+<li>Öffne [[Gereedschap]], dann ((Telefoon)), und klicke auf [[blauw:Aanzetten]].</li>
+<li>Windows fragt beim ersten Mal, ob Python Verbindungen empfangen darf. Wähle <b>Private Netzwerke</b>.</li>
+<li>Scanne den QR-Code mit deinem Telefon. Es muss im selben WLAN sein.</li>
+</ol>
+<p>Auf dem Telefon siehst du die Anzeigen und das Diagramm, und du kannst eine Markierung setzen.</p>
+<div class="kader"><div class="kop">Sicher</div><p>Vom Telefon aus lässt sich der Ausgang nur <b>aus</b>schalten. Einschalten oder die Spannung ändern geht nur am Computer. Der Link enthält einen Code, der wie ein Passwort wirkt; mit [[Nieuwe code]] funktionieren alte Links nicht mehr.</p></div>
+<h3>Meldungen über ntfy</h3>
+<ol class="stappen">
+<li>Installiere die kostenlose App <b>ntfy</b> auf deinem Telefon.</li>
+<li>Denk dir einen langen Namen aus, den niemand erraten kann, und abonniere ihn in der App.</li>
+<li>Trage diesen Namen bei [[Instellingen]] ein, schalte die Meldungen ein und klicke auf [[Testmelding sturen]].</li>
+</ol>
+<p>Du bekommst eine Nachricht bei einem Alarm, wenn ein Testprogramm oder Nachttest fertig ist und wenn das Netzgerät nicht mehr erreichbar ist, während der Ausgang an ist. Wer diesen Namen kennt, liest deine Meldungen mit, behandle ihn also wie ein Passwort.</p>
+</section>
+
+<section id="instellingen"><h2>Einstellungen und deine Daten</h2>
+<p>Bei [[Instellingen]] wählst du die Sprache, die helle oder dunkle Darstellung, den Ton, die gesprochenen Meldungen und die Meldungen auf dein Telefon. Nach einer anderen Sprache oder Darstellung bietet das Programm an, neu zu starten.</p>
+@@ instellingen | Sprache, Darstellung, Ton und Meldungen an einem Ort.
+<h3>Wo deine Daten liegen</h3>
+<p>Alles, was du erstellst, bleibt auf deinem eigenen Computer, in <code>%APPDATA%\CurrentBench</code>. Dort findest du deine Projekte, Logs, Berichte, Testprogramme und das Werkbuch. [[Gegevensmap openen]] bringt dich dorthin. Mache davon selbst ab und zu eine Sicherungskopie.</p>
+<p>Willst du alles beim Programm behalten, zum Beispiel auf einem USB-Stick, lege eine leere Datei <code>portable.txt</code> neben <code>korad_paneel.py</code>.</p>
+</section>
+
+<section id="scripts" class="vervolg"><h2>Lokale API</h2>
+<p>Mit der Lokalen API können Skripte über das Programm messen, während es normal geöffnet bleibt. Sie ist standardmäßig aus; du schaltest sie bei [[Instellingen]] ein. Die Lokale API ist nur auf diesem Computer erreichbar und verlangt einen Code aus den Einstellungen.</p>
+<table><tr><th>Befehl</th><th>Was er macht</th></tr>
+<tr><td class="nw"><code>py korad_klant.py stand</code></td><td>Was das Netzgerät gerade macht.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py zet 5 0.5</code></td><td>Zuerst die Stromgrenze, dann die Spannung.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py aan --akkoord</code></td><td>Ausgang an.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py uit</code></td><td>Ausgang aus.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py acties</code></td><td>Alle verfügbaren Befehle.</td></tr></table>
+<p>Skripte haben dieselben Grenzen wie die Tasten. Den Ausgang einschalten oder die Spannung erhöhen geht nur mit ausdrücklicher Zustimmung, und Fragen auf dem Bildschirm beantwortest du immer selbst.</p>
+</section>
+
+<section id="vangnet"><h2>Beenden und das Sicherheitsnetz</h2>
+<table><tr><th>Was passiert</th><th>Was das Programm macht</th></tr>
+<tr><td><b>Beenden mit eingeschaltetem Ausgang</b></td><td>Es fragt, was passieren soll: Ausgang aus und schließen, Ausgang anlassen und schließen, oder offen bleiben. Lässt du ihn an, überwacht ihn niemand mehr.</td></tr>
+<tr><td><b>Ein Fehler im Programm</b></td><td>Ein laufender Test stoppt, der Ausgang geht aus und du bekommst eine Meldung. Die Details stehen in <code>korad_fouten.log</code> in deinem Datenordner.</td></tr>
+<tr><td><b>USB getrennt oder Netzgerät aus</b></td><td>Es meldet, dass die Verbindung weg ist, und stoppt, was lief. Den Ausgang kann es dann nicht mehr bedienen; die Stromgrenze des Netzgeräts wirkt weiter.</td></tr></table>
+</section>
+
+<section id="problemen"><h2>Wenn etwas nicht funktioniert</h2>
+<table><tr><th style="width:38%">Was du siehst</th><th>Was du tust</th></tr>
+<tr><td>"((Kan poort niet openen))"</td><td>Ein anderes Programm benutzt den Port. Schließe es und verbinde neu.</td></tr>
+<tr><td>"((Geen Korad gevonden))"</td><td>Falscher Port, oder das Netzgerät ist aus. Schalte es ein und wähle den richtigen Port.</td></tr>
+<tr><td>Der Port steht nicht in der Liste</td><td>Prüfe das USB-Kabel, schalte das Netzgerät ein und klicke auf den runden Pfeil. Manchmal muss Windows noch einen Treiber installieren.</td></tr>
+<tr><td>"((Onbekend model))"</td><td>Siehe Kapitel {ref:verbinden}. Melde dein Modell gern auf GitHub, dann kann es in die Liste.</td></tr>
+<tr><td>"((Buiten bereik))" oder eine Ablehnung</td><td>Der Wert ist höher, als die Grenze erlaubt. Wähle einen niedrigeren Wert oder ein anderes Projekt.</td></tr>
+<tr><td>Das Lämpchen CC leuchtet dauerhaft</td><td>Die Last zieht mehr als die Stromgrenze. Schalte den Ausgang aus und suche die Ursache.</td></tr>
+<tr><td>Die Lämpchen stimmen nicht</td><td>Manche Modelle melden ihren Zustand anders. Vergleiche mit dem Display des Netzgeräts und melde es auf GitHub.</td></tr>
+<tr><td>Keine Meldungen auf dem Telefon</td><td>Stimmt der Name genau? Großbuchstaben zählen. Probiere [[Testmelding sturen]].</td></tr>
+<tr><td>Telefon bekommt keine Verbindung</td><td>Ist es im selben WLAN, ist die Bedienung eingeschaltet und hat Windows den Zugriff erlaubt?</td></tr>
+<tr><td>Gesprochene Meldungen bleiben stumm</td><td>Füge die Stimme für deine Sprache in Windows hinzu und öffne [[Instellingen]] erneut.</td></tr>
+<tr><td>Skript: nicht erreichbar</td><td>Läuft das Programm, und ist die Lokale API bei [[Instellingen]] eingeschaltet?</td></tr>
+<tr><td>Symbole sind Vierecke</td><td>Die Schriftart Segoe MDL2 Assets fehlt; sie sollte auf Windows 10 und 11 vorhanden sein.</td></tr>
+<tr><td>Das Programm startet nicht</td><td>Starte es aus der Eingabeaufforderung mit <code>py korad_paneel.py</code>, dann siehst du die Fehlermeldung.</td></tr></table>
+<h3>Über dieses Programm</h3>
+<p>{{NAAM}} ist ein kostenloses, nicht kommerzielles Hobbyprojekt, veröffentlicht unter der MIT-Lizenz und ohne jede Gewährleistung. Es ist inoffiziell und nicht mit Korad oder einer der anderen genannten Marken verbunden. Idee und Vorgaben stammen von Ronny Hullegie; der Code wurde von Claude (Anthropic) geschrieben. Fehler und Verbesserungen sind auf GitHub willkommen, aber Unterstützung wird nicht versprochen.</p>
+</section>

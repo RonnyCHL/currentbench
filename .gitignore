@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# everything a user creates stays on their own computer
+korad_instellingen.json
+korad_projecten.json
+korad_presets.json
+korad_bewaking.json
+korad_werkboek.json
+korad_afdrukken.json
+korad_fouten.log
+logs/
+rapporten/
+testprogrammas/
+
+# test output
+tests/afdrukken/
+
+# the built program (tools/maak_exe.py)
+dist/

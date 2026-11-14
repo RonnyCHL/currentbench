@@ -1,0 +1,266 @@
+<section id="veiligheid"><h2>Veiligheid eerst</h2>
+<p>{{NAAM}} bedient een echte voeding. Een verkeerde instelling kan een schakeling beschadigen, en een fout in een programma of een losse USB-kabel kan altijd gebeuren. Gebruik het programma op eigen risico.</p>
+<div class="kader let-op"><div class="kop">De echte beveiliging zit in de voeding</div>
+<p>De stroomgrens op de voeding werkt altijd, ook als het programma dicht is of vastloopt. Stel hem daarom altijd passend in, en vertrouw nooit alleen op het programma. Valt het programma weg terwijl de uitgang aan staat, dan blijft de uitgang gewoon aan.</p></div>
+<h3>Vier gewoontes</h3>
+<ol class="stappen">
+<li>Eerst de stroomgrens, dan de spanning, en pas daarna de uitgang aan.</li>
+<li>Begin bij iets nieuws met een lage stroomgrens, bijvoorbeeld 0,1 A, en houd in de gaten of de voeding begrenst.</li>
+<li>Controleer de polariteit: rode klem plus, zwarte klem min.</li>
+<li>Zet de uitgang uit als je klaar bent, en voordat je iets aansluit of losmaakt.</li>
+</ol>
+<div class="kader"><div class="kop">Noodstop</div><p>De <b>Esc</b>-toets zet de uitgang direct uit, in elk venster van het programma. Alles wat loopt, stopt dan ook.</p></div>
+<p>Zo lees je deze handleiding: knoppen staan in de tekst als [[Gereedschap]], [[blauw:Instellen]], [[groen:Opslaan]] of [[rood:Stop]]. De voorbeeldschermen zijn gemaakt met een nagebootste voeding; bij jou staan er je eigen waarden.</p>
+</section>
+
+<section id="installeren"><h2>Installeren en starten</h2>
+<p>Je hebt Windows 10 of 11 nodig en Python 3.10 of nieuwer, van <b>python.org</b>. Vink bij het installeren van Python <b>Add python.exe to PATH</b> aan.</p>
+<ol class="stappen">
+<li>Pak het programma uit in een eigen map, bijvoorbeeld in Documenten.</li>
+<li>Open die map in de Verkenner, typ <b>cmd</b> in de adresbalk en druk op Enter.</li>
+<li>Typ één keer <code>py -m pip install -r requirements.txt</code> en druk op Enter.</li>
+<li>Start het programma met <code>py korad_paneel.py</code>.</li>
+</ol>
+<p>De eerste keer volgt het programma de taal van Windows. Is die geen Nederlands of Duits, dan start het in het Engels. Je kiest de taal en de weergave bij [[Instellingen]] (hoofdstuk {ref:instellingen}).</p>
+<h3 id="demo">Proberen zonder voeding</h3>
+<p>Kies in de poortlijst rechtsboven <b>DEMO</b> en klik op [[blauw:Verbinden]], of start met <code>py korad_paneel.py --demo</code>. Het programma start dan opnieuw met een nagebootste voeding en een kleine nagebootste belasting. In de titelbalk staat <b>DEMO</b>.</p>
+<p>De demo opent geen enkele COM-poort. Metingen uit de demo zijn niet echt en blijven in een eigen map, los van je eigen projecten en metingen.</p>
+</section>
+
+<section id="verbinden"><h2>Verbinden met de voeding</h2>
+<ol class="stappen">
+<li>Zet de voeding aan en sluit de USB-kabel aan.</li>
+<li>Kies rechtsboven de COM-poort. Staat hij er niet bij, klik dan op het ronde pijltje ernaast.</li>
+<li>Klik op [[blauw:Verbinden]]. Het bolletje wordt groen, het model verschijnt bovenin en de meters gaan lopen.</li>
+</ol>
+<p>Controleer bij het eerste gebruik met lege klemmen of de metingen kloppen met het display van de voeding.</p>
+<div class="kader"><div class="kop">Goed om te weten</div>
+<p>Een COM-poort kan maar door één programma tegelijk gebruikt worden. Sluit dus eerst andere programma's die met de voeding praten.</p>
+<p>Stond de uitgang al aan toen je verbond, dan vraagt het programma of hij uit moet. Kies <b>Ja</b> als je niet zeker weet wat er aan hangt.</p></div>
+<h3>Welke voedingen</h3>
+<p>Het programma leest het model uit de voeding en past zijn bereik daarop aan. Herkend worden de Korad KA- en KD-reeks van 30 en 60 V en de gelijke modellen van Tenma, Velleman, RND en Stamos. Alleen de KA3005PS is echt getest. Voedingen met twee kanalen, zoals de KA3305P, werken niet. De volledige lijst staat in de README.</p>
+<h3>Een onbekend model</h3>
+<p>Antwoordt het apparaat als een Korad maar kent het programma het model niet, dan krijg je een waarschuwing. Kies je om toch te verbinden, dan vul je het maximum in dat op het typeplaatje staat. Het programma gaat daar nooit boven en onthoudt het voor de volgende keer.</p>
+@@smal bereik | Bij een onbekend model vul je het bereik van het typeplaatje in.
+</section>
+
+<section id="hoofdvenster"><h2>Het hoofdvenster</h2>
+<p>Alles wat je dagelijks nodig hebt, staat in één venster.</p>
+@@plaat hoofd_aan | Het hoofdvenster terwijl de uitgang aan staat.
+<ol class="callouts">
+<li><b>Statusbalk.</b> Kleur en woord zeggen wat de uitgang doet.</li>
+<li><b>Kolom.</b> Werkbankstand, mini-venster, projecten, stroomafdruk, gereedschap, werkboek en instellingen.</li>
+<li><b>Project.</b> Hoe hoog spanning en stroomgrens mogen. Klik om te wisselen.</li>
+<li><b>Verbinding.</b> De COM-poort en de knop om te verbinden.</li>
+<li><b>Meters.</b> Spanning, stroom en vermogen zoals de voeding ze meet.</li>
+<li><b>Status.</b> De lampjes en de knop voor de bewaking.</li>
+<li><b>Verbruik.</b> Lading, energie en de stroom in de grafiek.</li>
+<li><b>Grafiek.</b> Spanning en stroom over de tijd.</li>
+<li><b>Instellen.</b> Spanning, stroomgrens, uitgang en geheugens.</li>
+<li><b>Accu nabootsen</b> en testprogramma's.</li>
+<li><b>Notitie en log.</b> Een markering plaatsen en metingen bewaren.</li>
+</ol>
+</section>
+
+<section id="instellen"><h2>Spanning en stroomgrens instellen</h2>
+<ol class="stappen">
+<li>Vul bij ((Spanning)) de spanning in. Een komma of een punt mag allebei.</li>
+<li>Vul bij ((Stroomgrens)) in hoeveel stroom er hooguit mag lopen.</li>
+<li>Druk op Enter of klik op [[blauw:Instellen]]. Het programma stuurt eerst de stroomgrens en daarna de spanning.</li>
+<li>Klik op [[Uitgang aanzetten]]. Die knop wordt groen en zet de uitgang daarna ook weer uit.</li>
+</ol>
+<p>De vier knoppen bij ((Geheugen)) roepen vaste combinaties op; op de knop staat wat erin zit.</p>
+<div class="kader let-op"><div class="kop">Let op</div><p>Wil je de spanning verhogen terwijl de uitgang aan staat, dan vraagt het programma eerst of dat mag: de hogere spanning komt direct op wat er is aangesloten.</p></div>
+</section>
+
+<section id="projecten" class="vervolg"><h2>Projecten en grenzen</h2>
+<p>Een project is de grens die het programma bewaakt, met een eigen kleur. De kleur zie je op de knop bovenin en naast de titel van elk venster. Binnen een project weigert het programma alles boven de grens: bij het instellen, bij de geheugenknoppen, in testprogramma's en bij het nabootsen van een accu.</p>
+<p>Het programma begint met één project, <b>{{VRIJ}}</b>, dat het volledige bereik van de voeding toestaat. Maak voor elke schakeling een eigen project met een veilige grens.</p>
+<h3>Een project maken</h3>
+<ol class="stappen">
+<li>Klik links op [[Projecten]] en klik een bestaand project aan.</li>
+<li>Vul de naam, de hoogste spanning, de hoogste stroom en de reden in, en kies een kleur.</li>
+<li>Klik op [[Als nieuw project toevoegen]]. [[groen:Opslaan]] zou juist het aangeklikte project overschrijven.</li>
+<li>Klik op [[blauw:Dit project kiezen]].</li>
+</ol>
+@@ projecten | Elk project heeft een eigen grens, kleur, geheugens en bewaking.
+<p>Stel je de geheugenknoppen en de bewaking in zoals je wilt, klik dan op [[Geheugens en bewaking van nu bewaren]]. Bij het kiezen van het project krijg je die waarden terug.</p>
+<h3>Als de grens wordt overschreden</h3>
+<p>De voeding kan ook aan de voorkant hoger worden gezet. Gebeurt dat terwijl de uitgang aan staat, dan zet het programma binnen een of twee seconden de uitgang uit en geeft het een alarm. Dat blijft staan tot je het wist in het statusvak.</p>
+<p>Mag een nieuw project hoger dan het huidige, dan vraagt het programma eerst of alles wat is aangesloten dat aankan. Een beschadigd projectbestand wordt genegeerd en kan een grens dus nooit verhogen.</p>
+</section>
+
+<section id="meters"><h2>Meters, lampjes en verbruik</h2>
+<h3>De statusbalk</h3>
+<table><tr><th>Kleur</th><th>Betekenis</th></tr>
+<tr><td class="nw"><b>Grijs</b></td><td>Niet verbonden, of de uitgang staat uit.</td></tr>
+<tr><td class="nw"><b>Groen</b></td><td>De uitgang staat aan op vaste spanning.</td></tr>
+<tr><td class="nw"><b>Amber</b></td><td>De voeding begrenst de stroom.</td></tr>
+<tr><td class="nw"><b>Knipperend rood</b></td><td>Een alarm of noodstop, met de melding erbij.</td></tr></table>
+<h3>De ringmeters</h3>
+<p>Het getal in het midden is wat de voeding nu meet. Het witte streepje op de ring is de ingestelde spanning of de stroomgrens. Het rode stukje buiten de stroomring begint net onder de stroomgrens: komt de ring daar, dan gaat de voeding bijna begrenzen. De rode zone bij de spanningsring is alles boven de grens van het project.</p>
+<h3>De lampjes</h3>
+<table><tr><th>Lampje</th><th>Betekenis</th></tr>
+<tr><td class="nw"><b>CV</b></td><td>Normaal. De voeding houdt de spanning vast en de belasting neemt wat hij nodig heeft.</td></tr>
+<tr><td class="nw"><b>CC</b></td><td>De belasting wil meer dan de stroomgrens. De voeding houdt de stroom tegen en de spanning zakt. Even oplichten bij het inschakelen is normaal. Blijft het branden bij een nieuwe schakeling, zet de uitgang dan uit en zoek de oorzaak.</td></tr>
+<tr><td class="nw"><b>((Uitgang aan))</b></td><td>Er staat spanning op de klemmen.</td></tr>
+<tr><td class="nw"><b>((Bewaking actief))</b></td><td>Groen: er staat minstens één bewakingsregel aan. Rood: er is een alarm.</td></tr></table>
+<h3>Verbruik en stroom in beeld</h3>
+<p>Het vak rechtsboven telt de lading (mAh) en energie (Wh) sinds de teller op nul ging. Daaronder staan de hoogste, gemiddelde en laagste stroom over precies het stuk dat in de grafiek staat. Zoom je in, dan rekent het vak alleen dat stuk.</p>
+</section>
+
+<section id="grafiek"><h2>De grafiek</h2>
+<p>De rode lijn is de spanning, de gele lijn de stroom. Boven de grafiek staan genummerde vlaggetjes: notities, stappen, uitslagen en meldingen. Beweeg de muis over een vlaggetje om de tekst te zien.</p>
+<table><tr><th>Wat je wilt</th><th>Hoe</th></tr>
+<tr><td>Meer of minder tijd zien</td><td>De knoppen rechtsboven de grafiek.</td></tr>
+<tr><td>Inzoomen op een stuk</td><td>Met de muis over dat stuk slepen.</td></tr>
+<tr><td>In- en uitzoomen rond een punt</td><td>Scrollwiel boven de grafiek.</td></tr>
+<tr><td>Terug naar live</td><td>Dubbelklikken in de grafiek.</td></tr>
+<tr><td>Een waarde aflezen</td><td>De muis boven de grafiek houden.</td></tr>
+<tr><td>Iets aantekenen</td><td>Tekst bij ((Notitie)) invullen en Enter of [[Markering plaatsen]].</td></tr></table>
+<table><tr><th>Kleur van het vlaggetje</th><th>Soort</th></tr>
+<tr><td class="nw">Groen</td><td>Een controle die goed ging.</td></tr>
+<tr><td class="nw">Rood</td><td>Een fout, alarm of noodstop.</td></tr>
+<tr><td class="nw">Blauw</td><td>Iets dat het programma zelf zag, zoals een herstart.</td></tr>
+<tr><td class="nw">Grijs of wit</td><td>Stappen en je eigen notities.</td></tr></table>
+<p>Het programma onthoudt ruim twintig uur aan metingen. Wil je ze bewaren, start dan een log.</p>
+</section>
+
+<section id="bewaking" class="vervolg"><h2>Bewaking</h2>
+<p>Met [[Bewaking instellen]] maak je tot drie regels die het programma bij elke meting controleert zolang de uitgang aan staat. Een regel lees je als een zin: <i>stroom boven 300 mA langer dan 5 s, dan uitgang uit</i>. Je kiest stroom, spanning of vermogen, boven of onder, de waarde, hoe lang, en of de uitgang uit moet of dat je alleen een waarschuwing wilt.</p>
+@@smal bewaking | Bewakingsregels werken naast de stroomgrens van de voeding.
+</section>
+
+<section id="loggen"><h2>Loggen en rapporten</h2>
+<h3>Een log bijhouden</h3>
+<p>Klik rechtsonder op [[Log starten]] en kies een naam. Elke meting komt dan als regel in een CSV-bestand, met de markeringen erbij. Een oud log bekijk je met [[Log openen]] boven de grafiek.</p>
+<h3>Een rapport maken</h3>
+<p>Zoom de grafiek in op het stuk dat je wilt vastleggen en klik op [[Rapport maken]]. Geef een titel en eventueel een opmerking. Het rapport opent in de browser; met Ctrl+P en <i>Opslaan als PDF</i> maak je er een PDF van.</p>
+<h3>Accu nabootsen</h3>
+<p>Op de tweede regel onderin laat je de spanning langzaam veranderen, zoals bij een accu die leegloopt. Vul de begin- en eindspanning en de duur in en klik op [[Start]].</p>
+<p>Met <b>R</b> boots je de inwendige weerstand na, in milliohm: het programma zet de spanning dan steeds op bronspanning min stroom maal R. Zo zie je of een schakeling het blijft doen als de spanning onder belasting inzakt. De nagebootste accu stopt als je zelf iets instelt.</p>
+</section>
+
+<section id="programmas"><h2>Testprogramma's</h2>
+<p>Een testprogramma is een reeks stappen die de voeding vanzelf doorloopt. Open het venster met [[Testprogramma's]] rechtsonder.</p>
+@@ programmas | Een testprogramma met stappen en verwachtingen.
+<p>Per stap kies je de overgang (<i>sprong</i> of <i>helling</i>), de spanning, de stroomgrens, of de uitgang aan of uit staat en de duur. Je kunt ook een verwachting invullen: de gemiddelde stroom moet dan tussen twee grenzen liggen. Aan het eind zie je per stap <b>goed</b> of <b>fout</b>.</p>
+<p>Na [[groen:Starten]] noemt het programma het aantal stappen, de duur en de hoogste spanning, en vraagt het of het mag. Een programma dat ergens boven de projectgrens komt, start niet. De stappen staan als banden in de grafiek. Met Esc of de stopknop stop je meteen; de uitgang gaat dan uit.</p>
+</section>
+
+<section id="gereedschap"><h2>Gereedschap</h2>
+<p>De knop [[Gereedschap]] in de kolom links opent alle hulpmiddelen. Klik op een tegel om hem te openen.</p>
+@@ gereedschap | Alle hulpmiddelen op één plek.
+<h3>Opstartcurve</h3>
+<p>Een nieuwe schakeling zet je liever niet meteen op volle spanning. De opstartcurve laat de spanning in kleine stapjes van 0 omhoog lopen en tekent de stroom. Een fout zie je dan al bij een paar volt. Bij de stroomgrens stopt het programma en gaat de uitgang uit.</p>
+@@ opstartcurve_uitslag | Onder de grafiek staat in gewone taal wat er te zien is.
+<p>Gaat alles goed, dan blijft de uitgang aan op de eindspanning. De grijze lijnen zijn de vorige metingen, zodat je ziet wat een wijziging aan de curve verandert.</p>
+</section>
+
+<section id="onderdelen"><h2>Onderdelentester</h2>
+<p>De voeding als meetinstrument voor een los onderdeel. Kies bovenin wat je meet; de tekening laat zien hoe het tussen de klemmen moet. Klik op [[blauw:Meten]] en bevestig dat alleen het losse onderdeel is aangesloten. De uitgang gaat kort aan met een lage stroomgrens en daarna komen je eigen instellingen terug.</p>
+<table><tr><th>Soort</th><th>Voeding</th><th>Wat je te weten komt</th></tr>
+<tr><td class="nw"><b>Diode of led</b></td><td class="nw">5 V, 10 mA</td><td>De doorlaatspanning en de soort: schottky, gewone diode of de kleur van een led. Geen stroom: hij zit andersom.</td></tr>
+<tr><td class="nw"><b>Weerstand</b></td><td class="nw">1 V, 100 mA</td><td>De waarde, goed van ongeveer 1 tot 200 Ω en op een paar procent nauwkeurig.</td></tr></table>
+@@ onderdeel_uitslag | De schaal laat zien in welke zone de meting valt.
+<div class="kader let-op"><div class="kop">Alleen losse onderdelen</div><p>Sluit tijdens een onderdeelmeting nooit een hele schakeling aan.</p></div>
+</section>
+
+<section id="afdruk"><h2>Stroomafdruk en herstartteller</h2>
+<p>Een werkend bordje start elke keer op dezelfde manier. De stroomafdruk bewaart dat verloop, zodat je bij de volgende start meteen ziet of een nieuw bordje of nieuwe firmware afwijkt.</p>
+<ol class="stappen">
+<li>Sluit een bordje aan waarvan je weet dat het goed is, zet de uitgang aan en wacht tot het is opgestart.</li>
+<li>Klik links op de knop voor de stroomafdruk, vul een naam in en bewaar de laatste start als nieuwe afdruk.</li>
+<li>Zet de uitgang uit en weer aan en voeg die start toe aan de afdruk. Hoe meer starts, hoe realistischer de band.</li>
+<li>Kies de afdruk en zet hem aan.</li>
+</ol>
+<p>Bij elke volgende start volgt het programma de stroom tegen de band en staat bij het vak met de stroom hoeveel procent erbinnen valt. Bij 95 procent of meer heet dat goed. De stroomafdruk waarschuwt alleen; de uitgang blijft zoals hij staat.</p>
+@@ afdruk | Een opgeslagen stroomafdruk.
+<h3>Herstartteller</h3>
+<p>Een bordje dat steeds opnieuw opstart, laat dat zien in de stroom: een korte dip en dan weer het normale niveau. Het programma telt die dips. Zijn ze regelmatig, dan staat de tijd ertussen erbij.</p>
+</section>
+
+<section id="nachttest"><h2>Nachttest en logs vergelijken</h2>
+<h3>Nachttest</h3>
+<p>Sommige fouten komen maar af en toe. De nachttest meet uren achter elkaar en schrijft alles op. Vul de duur, de spanning, de stroomgrens en de meldgrens in en klik op [[blauw:Start]]. De uitgang gaat aan en er start een log.</p>
+<p>Stroompieken, begrenzen en een uitgang die uitgaat komen als markering in de grafiek en, als meldingen aanstaan, op je telefoon. Aan het eind maakt het programma vanzelf een rapport. Laat de computer zolang aan staan en zet hem niet in slaapstand.</p>
+<h3>Logs vergelijken</h3>
+<p>Leg twee logs over elkaar, bijvoorbeeld het verbruik voor en na een firmware-update. Kies meting A en B en boven de grafiek wat je wilt zien. De tabel eronder geeft per meting de waarden en het verschil, ook in procenten.</p>
+@@ vergelijken_uitslag | Twee logs over elkaar, met de verschillen in een tabel.
+</section>
+
+<section id="werkboek"><h2>Werkboek</h2>
+<p>Alles wat je met het programma doet, komt vanzelf in het werkboek, zodat je later terugvindt wat je wanneer hebt gemeten. Kies een soort of typ een zoekwoord. Dubbelklik op een regel om een log in de grafiek te laden of een rapport te openen. Met [[Notitie toevoegen]] schrijf je er zelf iets bij.</p>
+@@ werkboek | Het werkboek zet alles op datum.
+</section>
+
+<section id="werkbank"><h2>Werkbankstand, mini-venster en geluid</h2>
+<p><b>Werkbankstand.</b> Met <b>F11</b> wordt het hele scherm een display met enorme cijfers en een grote uit-knop. Opnieuw <b>F11</b> brengt je terug.</p>
+@@ werkbank | De werkbankstand is goed leesbaar van een afstand.
+<p><b>Mini-venster.</b> Een klein venster dat altijd bovenop blijft, met spanning, stroom en een uit-knop. Dubbelklik op de cijfers om het grote venster terug te halen.</p>
+<p><b>Geluid.</b> Begrenst de voeding langer dan een halve seconde, dan klinkt er een korte dubbele piep. Uitzetten kan bij [[Instellingen]].</p>
+<p><b>Gesproken meldingen.</b> Het programma kan zeggen wat er gebeurt. Zet dit aan bij [[Instellingen]] en probeer het met [[Laat horen]]. Ontbreekt de stem voor jouw taal, voeg die dan toe in de instellingen van Windows, onder <i>Tijd en taal</i> en <i>Spraak</i>.</p>
+</section>
+
+<section id="telefoon"><h2>Telefoon en meldingen</h2>
+<h3>Telefoon als afstandsbediening</h3>
+<ol class="stappen">
+<li>Open [[Gereedschap]], dan ((Telefoon)), en klik op [[blauw:Aanzetten]].</li>
+<li>Windows vraagt de eerste keer of Python verbindingen mag ontvangen. Kies <b>Privénetwerken</b>.</li>
+<li>Scan de QR-code met je telefoon. Die moet op hetzelfde wifi-netwerk zitten.</li>
+</ol>
+<p>Op de telefoon zie je de meters en de grafiek, en je kunt een markering plaatsen.</p>
+<div class="kader"><div class="kop">Veilig</div><p>Vanaf de telefoon kan de uitgang alleen <b>uit</b>. Aanzetten of de spanning veranderen kan alleen op de computer. De link bevat een code die werkt als een wachtwoord; met [[Nieuwe code]] werken oude links niet meer.</p></div>
+<h3>Meldingen via ntfy</h3>
+<ol class="stappen">
+<li>Installeer de gratis app <b>ntfy</b> op je telefoon.</li>
+<li>Verzin een lange naam die niemand kan raden, en abonneer je daarop in de app.</li>
+<li>Vul die naam in bij [[Instellingen]], zet de meldingen aan en klik op [[Testmelding sturen]].</li>
+</ol>
+<p>Je krijgt bericht bij een alarm, als een testprogramma of nachttest klaar is, en als de voeding onbereikbaar wordt terwijl de uitgang aan staat. Wie die naam kent, leest je meldingen mee, dus behandel hem als een wachtwoord.</p>
+</section>
+
+<section id="instellingen"><h2>Instellingen en je gegevens</h2>
+<p>Bij [[Instellingen]] kies je de taal, de lichte of donkere weergave, het geluid, de gesproken meldingen en de meldingen op je telefoon. Na een andere taal of weergave biedt het programma aan om opnieuw te starten.</p>
+@@ instellingen | Taal, weergave, geluid en meldingen op één plek.
+<h3>Waar je gegevens staan</h3>
+<p>Alles wat je maakt blijft op je eigen computer, in <code>%APPDATA%\CurrentBench</code>. Daar vind je je projecten, logs, rapporten, testprogramma's en het werkboek. [[Gegevensmap openen]] brengt je erheen. Maak hier zelf af en toe een reservekopie van.</p>
+<p>Wil je alles naast het programma houden, bijvoorbeeld op een USB-stick, zet dan een leeg bestand <code>portable.txt</code> naast <code>korad_paneel.py</code>.</p>
+</section>
+
+<section id="scripts" class="vervolg"><h2>Koppeling voor scripts</h2>
+<p>Met de koppeling kunnen scripts via het programma meten, terwijl het gewoon open blijft. Hij staat standaard uit; je zet hem aan bij [[Instellingen]]. De koppeling is alleen bereikbaar op deze computer en vraagt een code uit de instellingen.</p>
+<table><tr><th>Opdracht</th><th>Wat het doet</th></tr>
+<tr><td class="nw"><code>py korad_klant.py stand</code></td><td>Wat de voeding nu doet.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py zet 5 0.5</code></td><td>Eerst de stroomgrens, dan de spanning.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py aan --akkoord</code></td><td>Uitgang aan.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py uit</code></td><td>Uitgang uit.</td></tr>
+<tr><td class="nw"><code>py korad_klant.py acties</code></td><td>Alle beschikbare opdrachten.</td></tr></table>
+<p>Scripts hebben dezelfde grenzen als de knoppen. De uitgang aanzetten of de spanning verhogen kan alleen met een expliciet akkoord, en vragen op het scherm beantwoord je altijd zelf.</p>
+</section>
+
+<section id="vangnet"><h2>Afsluiten en het vangnet</h2>
+<table><tr><th>Wat er gebeurt</th><th>Wat het programma doet</th></tr>
+<tr><td><b>Afsluiten met de uitgang aan</b></td><td>Het vraagt wat er moet gebeuren: uitgang uit en sluiten, uitgang aan laten en sluiten, of open blijven. Laat je hem aan, dan bewaakt niemand hem nog.</td></tr>
+<tr><td><b>Een fout in het programma</b></td><td>Een lopende proef stopt, de uitgang gaat uit en je krijgt een melding. De details staan in <code>korad_fouten.log</code> in je gegevensmap.</td></tr>
+<tr><td><b>USB los of voeding uit</b></td><td>Het meldt dat de verbinding weg is en stopt wat er liep. De uitgang kan het dan niet meer bedienen; de stroomgrens van de voeding blijft werken.</td></tr></table>
+</section>
+
+<section id="problemen"><h2>Als er iets niet werkt</h2>
+<table><tr><th style="width:38%">Wat je ziet</th><th>Wat je doet</th></tr>
+<tr><td>"((Kan poort niet openen))"</td><td>Een ander programma gebruikt de poort. Sluit dat en verbind opnieuw.</td></tr>
+<tr><td>"((Geen Korad gevonden))"</td><td>Verkeerde poort, of de voeding staat uit. Zet hem aan en kies de juiste poort.</td></tr>
+<tr><td>De poort staat niet in de lijst</td><td>Controleer de USB-kabel, zet de voeding aan en klik op het ronde pijltje. Soms moet Windows nog een stuurprogramma installeren.</td></tr>
+<tr><td>"((Onbekend model))"</td><td>Zie hoofdstuk {ref:verbinden}. Meld je model graag op GitHub, dan kan het in de lijst.</td></tr>
+<tr><td>"((Buiten bereik))" of een weigering</td><td>De waarde is hoger dan de grens toestaat. Kies een lagere waarde of een ander project.</td></tr>
+<tr><td>Het lampje CC blijft branden</td><td>De belasting trekt meer dan de stroomgrens. Zet de uitgang uit en zoek de oorzaak.</td></tr>
+<tr><td>De lampjes kloppen niet</td><td>Sommige modellen melden hun stand anders. Vergelijk met het display van de voeding en meld het op GitHub.</td></tr>
+<tr><td>Geen meldingen op de telefoon</td><td>Klopt de naam precies? Hoofdletters tellen. Probeer [[Testmelding sturen]].</td></tr>
+<tr><td>Telefoon krijgt geen verbinding</td><td>Zit hij op hetzelfde wifi-netwerk, staat de bediening aan en heeft Windows de toegang toegestaan?</td></tr>
+<tr><td>Gesproken meldingen zwijgen</td><td>Voeg de stem voor jouw taal toe in Windows en open [[Instellingen]] opnieuw.</td></tr>
+<tr><td>Script: niet bereikbaar</td><td>Draait het programma, en staat de koppeling aan bij [[Instellingen]]?</td></tr>
+<tr><td>Icoontjes zijn vierkantjes</td><td>Het lettertype Segoe MDL2 Assets ontbreekt; dat hoort op Windows 10 en 11 te staan.</td></tr>
+<tr><td>Het programma start niet</td><td>Start het vanuit de opdrachtprompt met <code>py korad_paneel.py</code>, dan zie je de foutmelding.</td></tr></table>
+<h3>Over dit programma</h3>
+<p>{{NAAM}} is een gratis hobbyproject zonder winstoogmerk, gepubliceerd onder de MIT-licentie en zonder enige garantie. Het is niet officieel en niet verbonden aan Korad of een van de andere genoemde merken. Idee en opdracht komen van Ronny Hullegie; de code is geschreven door Claude (Anthropic). Fouten en verbeteringen zijn welkom op GitHub, maar ondersteuning wordt niet beloofd.</p>
+</section>
