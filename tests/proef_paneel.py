@@ -163,6 +163,9 @@ _api = __import__("socket").socket()
 _api.bind(("127.0.0.1", 0))
 kp.SETTINGS_DEFAULTS["api_poort"] = _api.getsockname()[1]
 _api.close()
+# The screenshots feed the manual, which shows the advanced layout without the welcome window in front.
+kp.SETTINGS_DEFAULTS["uitgebreid"] = True
+kp.SETTINGS_DEFAULTS["welkom_gezien"] = True
 
 app = kp.App()
 app.report_callback_exception = lambda *a: FOUTEN_TK.append("".join(traceback.format_exception(*a)))

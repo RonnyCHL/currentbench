@@ -14,7 +14,8 @@
 </section>
 
 <section id="installeren"><h2>Installieren und starten</h2>
-<p>Du brauchst Windows 10 oder 11 und Python 3.10 oder neuer, von <b>python.org</b>. Setze bei der Installation von Python das Häkchen bei <b>Add python.exe to PATH</b>.</p>
+<p><b>Der einfache Weg:</b> Lade <b>CurrentBench-…-windows.zip</b> von der Seite Releases auf GitHub herunter, entpacke die Datei in einen eigenen Ordner und starte <b>CurrentBench.exe</b>. Keine Installation und kein Python nötig. Das Programm ist nicht signiert: Beim ersten Mal kann Windows melden, dass es deinen PC geschützt hat (klicke auf <b>Weitere Informationen</b> und dann auf <b>Trotzdem ausführen</b>), und ein Virenscanner kann es eine halbe Minute festhalten, um es zu prüfen.</p>
+<p><b>Aus dem Quellcode:</b> Du brauchst Windows 10 oder 11 und Python 3.10 oder neuer, von <b>python.org</b>. Setze bei der Installation von Python das Häkchen bei <b>Add python.exe to PATH</b>.</p>
 <ol class="stappen">
 <li>Entpacke das Programm in einen eigenen Ordner, zum Beispiel in Dokumente.</li>
 <li>Öffne diesen Ordner im Datei-Explorer, tippe <b>cmd</b> in die Adressleiste und drücke Enter.</li>
@@ -22,6 +23,8 @@
 <li>Starte das Programm mit <code>py korad_paneel.py</code>.</li>
 </ol>
 <p>Beim ersten Mal folgt das Programm der Sprache von Windows. Ist das weder Niederländisch noch Deutsch, startet es auf Englisch. Die Sprache und die Darstellung wählst du bei [[Instellingen]] (Kapitel {ref:instellingen}).</p>
+<p>Beim ersten Start erscheint ein Willkommensfenster mit den vier Schritten für den Anfang und der Sprachwahl. Schließe es mit [[groen:Aan de slag]]; du findest es unter [[Gereedschap]] wieder.</p>
+<p>Das Hauptfenster beginnt in einer einfachen Ansicht: die Anzeigen, das Diagramm und die Zeile zum Einstellen. Die Schaltfläche [[Uitgebreid]], rechts neben den Speichertasten, holt den Rest dazu: Verbrauch, Akku-Simulation, Testprogramme, Notizen und das Protokoll. Mit [[Eenvoudig]] verschwinden sie wieder. Startest du ein Testprogramm oder ein Protokoll, kommen diese Zeilen von selbst ins Bild. Dieses Handbuch zeigt die erweiterte Ansicht.</p>
 <h3 id="demo">Ausprobieren ohne Netzgerät</h3>
 <p>Wähle in der Portliste oben rechts <b>DEMO</b> und klicke auf [[blauw:Verbinden]], oder starte mit <code>py korad_paneel.py --demo</code>. Das Programm startet dann neu mit einem simulierten Netzgerät und einer kleinen simulierten Last. In der Titelleiste steht <b>DEMO</b>.</p>
 <p>Die Demo öffnet keinen COM-Port. Messungen aus der Demo sind nicht echt und bleiben in einem eigenen Ordner, getrennt von deinen eigenen Projekten und Messungen.</p>
@@ -78,10 +81,10 @@
 <p>Das Programm beginnt mit einem Projekt, <b>{{VRIJ}}</b>, das den vollen Bereich des Netzgeräts erlaubt. Lege für jede Schaltung ein eigenes Projekt mit einer sicheren Grenze an.</p>
 <h3>Ein Projekt anlegen</h3>
 <ol class="stappen">
-<li>Klicke links auf [[Projecten]] und klicke ein vorhandenes Projekt an.</li>
-<li>Trage den Namen, die höchste Spannung, den höchsten Strom und den Grund ein und wähle eine Farbe.</li>
-<li>Klicke auf [[Als nieuw project toevoegen]]. [[groen:Opslaan]] würde dagegen das angeklickte Projekt überschreiben.</li>
-<li>Klicke auf [[blauw:Dit project kiezen]].</li>
+<li>Klicke links auf [[Projecten]] und dann auf [[Nieuw project maken]]. Es erscheint ein neues Projekt mit einer vorsichtigen Grenze von 5 V und 0,5 A.</li>
+<li>Trage den Namen, die höchste Spannung, den höchsten Strom und den Grund ein und wähle eine Farbe. Zwei Projekte können nicht denselben Namen haben.</li>
+<li>Klicke auf [[groen:Opslaan]].</li>
+<li>Klicke auf [[blauw:Dit project kiezen]]. Ist das Netzgerät höher eingestellt als die Grenze dieses Projekts und ist der Ausgang aus, senkt das Programm die eingestellte Spannung auf die Grenze. Dasselbe geschieht beim Verbinden.</li>
 </ol>
 @@ projecten | Grenze, Farbe, Speicher und Überwachung hat jedes Projekt für sich.
 <p>Stelle die Speichertasten und die Überwachung so ein, wie du willst, und klicke dann auf [[Geheugens en bewaking van nu bewaren]]. Beim Wählen des Projekts bekommst du diese Werte zurück.</p>
@@ -144,6 +147,7 @@
 <section id="programmas"><h2>Testprogramme</h2>
 <p>Ein Testprogramm ist eine Reihe von Schritten, die das Netzgerät von selbst durchläuft. Öffne das Fenster mit [[Testprogramma's]] unten rechts.</p>
 @@ programmas | Ein Testprogramm mit Schritten und Erwartungen.
+<p>Das Fenster öffnet sich mit einem Beispiel. Mit [[Nieuw programma]] beginnst du mit einer leeren Liste: Trage unten einen Schritt ein und klicke auf [[Stap toevoegen]].</p>
 <p>Pro Schritt wählst du den Übergang (<i>Sprung</i> oder <i>Rampe</i>), die Spannung, die Stromgrenze, ob der Ausgang an oder aus ist und die Dauer. Du kannst auch eine Erwartung eintragen: Der mittlere Strom muss dann zwischen zwei Grenzen liegen. Am Ende siehst du pro Schritt <b>OK</b> oder <b>Fehler</b>.</p>
 <p>Nach [[groen:Starten]] nennt das Programm die Anzahl der Schritte, die Dauer und die höchste Spannung und fragt, ob es starten darf. Ein Testprogramm, das irgendwo über die Projektgrenze kommt, startet nicht. Die Schritte stehen als Bänder im Diagramm. Mit Esc oder der Stopp-Taste stoppst du sofort; der Ausgang geht dann aus.</p>
 </section>
@@ -261,6 +265,8 @@
 <tr><td>Skript: nicht erreichbar</td><td>Läuft das Programm, und ist die Lokale API bei [[Instellingen]] eingeschaltet?</td></tr>
 <tr><td>Symbole sind Vierecke</td><td>Die Schriftart Segoe MDL2 Assets fehlt; sie sollte auf Windows 10 und 11 vorhanden sein.</td></tr>
 <tr><td>Das Programm startet nicht</td><td>Starte es aus der Eingabeaufforderung mit <code>py korad_paneel.py</code>, dann siehst du die Fehlermeldung.</td></tr></table>
+<h3>Einen Fehler melden</h3>
+<p>Öffne [[Gereedschap]] und klicke auf [[Foutinformatie]]. Dieses Fenster stellt zusammen, was nötig ist, um einem Fehler nachzugehen: die Version, Windows, das Modell des Netzgeräts und die letzten Fehler. Es enthält keine Codes, Adressen, Seriennummern oder Projektnamen, und das Programm sendet von sich aus nichts. [[blauw:Melden op GitHub]] kopiert den Text und öffnet eine neue Meldung; füge den Text ein und beschreibe, was passiert ist. Hast du kein GitHub-Konto, macht [[Melden via de website]] dasselbe mit dem Formular auf ronnyhullegie.nl.</p>
 <h3>Über dieses Programm</h3>
-<p>{{NAAM}} ist ein kostenloses, nicht kommerzielles Hobbyprojekt, veröffentlicht unter der MIT-Lizenz und ohne jede Gewährleistung. Es ist inoffiziell und nicht mit Korad oder einer der anderen genannten Marken verbunden. Idee und Vorgaben stammen von Ronny Hullegie; der Code wurde von Claude (Anthropic) geschrieben. Fehler und Verbesserungen sind auf GitHub willkommen, aber Unterstützung wird nicht versprochen.</p>
+<p>{{NAAM}} ist ein kostenloses, nicht kommerzielles Hobbyprojekt, veröffentlicht unter der MIT-Lizenz und ohne jede Gewährleistung. Es ist inoffiziell und nicht mit Korad oder einer der anderen genannten Marken verbunden. Idee und Vorgaben stammen von Ronny Hullegie; der Code wurde von Claude (Anthropic) geschrieben. Fehler und Verbesserungen sind auf GitHub willkommen, aber Unterstützung wird nicht versprochen. Mehr über den Autor: www.ronnyhullegie.nl. Der Quellcode steht auf github.com/RonnyCHL/currentbench.</p>
 </section>

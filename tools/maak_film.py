@@ -48,7 +48,7 @@ TEKSTEN = {
                    "Component tester: diodes, LEDs and small resistors", "Overnight test, with notifications and a report",
                    "Compare two logs, with the differences in a table", "Bench mode: readable from across the room",
                    "Your phone as a remote: watch, and turn the output off", "English, Dutch and German", "Light or dark"),
-           "eind": ("Try it without a power supply", "Choose DEMO in the port list", "Idea and direction: Ronny Hullegie. Code: Claude (Anthropic). Free, MIT licence.")},
+           "eind": ("Try it without a power supply", "Choose DEMO in the port list", "Idea and direction: Ronny Hullegie, ronnyhullegie.nl. Code: Claude (Anthropic). Free, MIT licence.")},
     "nl": {"sub": "Voor Korad-voedingen", "demo": "Gratis en open source. Getoond met de ingebouwde demo: een nagebootste voeding.",
            "live": ("Live meters en grafiek: zie precies wat je schakeling trekt", "Inschakelen: de inschakelpiek staat meteen in de grafiek",
                     "Stroomgrens bereikt: de statusbalk wordt meteen amber", "Noodstop: Esc zet de uitgang altijd uit"),
@@ -57,7 +57,7 @@ TEKSTEN = {
                    "Onderdelentester: diodes, leds en kleine weerstanden", "Nachttest, met meldingen en een rapport",
                    "Twee logs vergelijken, met de verschillen in een tabel", "Werkbankstand: leesbaar van een afstand",
                    "Je telefoon als afstandsbediening: kijken en uitzetten", "Nederlands, Engels en Duits", "Licht of donker"),
-           "eind": ("Probeer het zonder voeding", "Kies DEMO in de poortlijst", "Idee en opdracht: Ronny Hullegie. Code: Claude (Anthropic). Gratis, MIT-licentie.")},
+           "eind": ("Probeer het zonder voeding", "Kies DEMO in de poortlijst", "Idee en opdracht: Ronny Hullegie, ronnyhullegie.nl. Code: Claude (Anthropic). Gratis, MIT-licentie.")},
     "de": {"sub": "Für Korad-Netzgeräte", "demo": "Kostenlos und Open Source. Gezeigt mit der eingebauten Demo: ein simuliertes Netzgerät.",
            "live": ("Live-Anzeigen und Diagramm: sieh genau, was deine Schaltung zieht", "Einschalten: der Einschaltstrom steht sofort im Diagramm",
                     "Stromgrenze erreicht: die Statusleiste wird sofort gelb", "Not-Aus: Esc schaltet den Ausgang immer aus"),
@@ -66,7 +66,7 @@ TEKSTEN = {
                    "Bauteiltester: Dioden, LEDs und kleine Widerstände", "Nachttest, mit Meldungen und einem Bericht",
                    "Zwei Logs vergleichen, mit den Unterschieden in einer Tabelle", "Werkbankmodus: aus der Ferne lesbar",
                    "Dein Telefon als Fernbedienung: ansehen und ausschalten", "Deutsch, Englisch und Niederländisch", "Hell oder dunkel"),
-           "eind": ("Probiere es ohne Netzgerät aus", "Wähle DEMO in der Portliste", "Idee und Vorgaben: Ronny Hullegie. Code: Claude (Anthropic). Kostenlos, MIT-Lizenz.")},
+           "eind": ("Probiere es ohne Netzgerät aus", "Wähle DEMO in der Portliste", "Idee und Vorgaben: Ronny Hullegie, ronnyhullegie.nl. Code: Claude (Anthropic). Kostenlos, MIT-Lizenz.")},
 }[TAAL]
 DIAS = ("projecten", "bewaking", "programma", "opstartcurve_uitslag", "onderdeel_uitslag", "nachttest", "vergelijken_uitslag", "werkbank",
         "telefoon", "instellingen", "licht_hoofd")

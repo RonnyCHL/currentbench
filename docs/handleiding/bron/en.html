@@ -14,7 +14,8 @@
 </section>
 
 <section id="installeren"><h2>Installing and starting</h2>
-<p>You need Windows 10 or 11 and Python 3.10 or newer, from <b>python.org</b>. When you install Python, tick <b>Add python.exe to PATH</b>.</p>
+<p><b>The easy way:</b> download <b>CurrentBench-…-windows.zip</b> from the Releases page on GitHub, unpack it into a folder of its own and start <b>CurrentBench.exe</b>. No installation and no Python needed. The program is not code-signed: the first time Windows may say it protected your PC (click <b>More info</b> and then <b>Run anyway</b>), and a virus scanner may hold it for half a minute to look at it.</p>
+<p><b>From source:</b> you need Windows 10 or 11 and Python 3.10 or newer, from <b>python.org</b>. When you install Python, tick <b>Add python.exe to PATH</b>.</p>
 <ol class="stappen">
 <li>Unpack the program into its own folder, for example in Documents.</li>
 <li>Open that folder in File Explorer, type <b>cmd</b> in the address bar and press Enter.</li>
@@ -22,6 +23,8 @@
 <li>Start the program with <code>py korad_paneel.py</code>.</li>
 </ol>
 <p>The first time, the program follows the Windows language. If that is not Dutch or German, it starts in English. You choose the language and the appearance under [[Instellingen]] (chapter {ref:instellingen}).</p>
+<p>The first start shows a welcome window with the four steps to get going and the language choice. Close it with [[groen:Aan de slag]]; you can find it again under [[Gereedschap]].</p>
+<p>The main window starts in a simple layout: the meters, the chart and the row for setting values. The button [[Uitgebreid]], to the right of the memory buttons, brings in the rest: usage, battery simulation, test programs, notes and the log. [[Eenvoudig]] hides them again. If you start a test program or a log, those rows come into view by themselves. This manual shows the advanced layout.</p>
 <h3 id="demo">Trying it without a supply</h3>
 <p>In the port list at the top right, choose <b>DEMO</b> and click [[blauw:Verbinden]], or start with <code>py korad_paneel.py --demo</code>. The program then restarts with a simulated supply and a small simulated load. The title bar shows <b>DEMO</b>.</p>
 <p>The demo does not open any COM port. Readings from the demo are not real and stay in a separate folder, apart from your own projects and measurements.</p>
@@ -78,10 +81,10 @@
 <p>The program starts with one project, <b>{{VRIJ}}</b>, which allows the full range of the supply. Create a separate project with a safe limit for each circuit.</p>
 <h3>Creating a project</h3>
 <ol class="stappen">
-<li>Click [[Projecten]] on the left and click an existing project.</li>
-<li>Enter the name, the highest voltage, the highest current and the reason, and choose a color.</li>
-<li>Click [[Als nieuw project toevoegen]]. [[groen:Opslaan]] would overwrite the project you clicked.</li>
-<li>Click [[blauw:Dit project kiezen]].</li>
+<li>Click [[Projecten]] on the left and click [[Nieuw project maken]]. A new project appears with a cautious limit of 5 V and 0.5 A.</li>
+<li>Enter the name, the highest voltage, the highest current and the reason, and choose a color. Two projects cannot have the same name.</li>
+<li>Click [[groen:Opslaan]].</li>
+<li>Click [[blauw:Dit project kiezen]]. If the supply is set higher than the limit of that project and the output is off, the program lowers the set voltage to the limit. The same happens when you connect.</li>
 </ol>
 @@ projecten | Each project has its own limit, color, memories and guards.
 <p>Set the memory buttons and the guards the way you want, then click [[Geheugens en bewaking van nu bewaren]]. When you choose the project, you get those values back.</p>
@@ -144,6 +147,7 @@
 <section id="programmas"><h2>Test programs</h2>
 <p>A test program is a series of steps the supply runs through automatically. Open the window with [[Testprogramma's]] at the bottom right.</p>
 @@ programmas | A test program with steps and expected results.
+<p>The window opens with an example. [[Nieuw programma]] starts you off with an empty list: fill in a step at the bottom and click [[Stap toevoegen]].</p>
 <p>For each step you choose the transition (<i>step</i> or <i>ramp</i>), the voltage, the current limit, whether the output is on or off, and the duration. You can also enter an expected result: the average current must then be between two limits. At the end you see <b>pass</b> or <b>fail</b> for each step.</p>
 <p>After [[groen:Starten]] the program states the number of steps, the duration and the highest voltage, and asks whether it may go ahead. A program that goes above the project limit anywhere does not start. The steps appear as bands in the chart. Esc or the stop button stops it immediately; the output then turns off.</p>
 </section>
@@ -261,6 +265,8 @@
 <tr><td>Script: not reachable</td><td>Is the program running, and is the local API turned on under [[Instellingen]]?</td></tr>
 <tr><td>Icons are squares</td><td>The font Segoe MDL2 Assets is missing; it should be present on Windows 10 and 11.</td></tr>
 <tr><td>The program does not start</td><td>Start it from the command prompt with <code>py korad_paneel.py</code>, and you will see the error message.</td></tr></table>
+<h3>Reporting a problem</h3>
+<p>Open [[Gereedschap]] and click [[Foutinformatie]]. That window lists what is needed to look into a problem: the version, Windows, the model of the supply and the last errors. It contains no codes, addresses, serial numbers or project names, and the program sends nothing by itself. [[blauw:Melden op GitHub]] copies the text and opens a new issue; paste the text and describe what happened. If you have no GitHub account, [[Melden via de website]] does the same with the form on ronnyhullegie.nl.</p>
 <h3>About this program</h3>
-<p>{{NAAM}} is a free, non-commercial hobby project, published under the MIT licence and without any warranty. It is unofficial and not affiliated with Korad or any of the other brands mentioned. Idea and direction by Ronny Hullegie; the code was written by Claude (Anthropic). Bugs and improvements are welcome on GitHub, but support is not promised.</p>
+<p>{{NAAM}} is a free, non-commercial hobby project, published under the MIT licence and without any warranty. It is unofficial and not affiliated with Korad or any of the other brands mentioned. Idea and direction by Ronny Hullegie; the code was written by Claude (Anthropic). Bugs and improvements are welcome on GitHub, but support is not promised. More about the maker: www.ronnyhullegie.nl. The source code is at github.com/RonnyCHL/currentbench.</p>
 </section>

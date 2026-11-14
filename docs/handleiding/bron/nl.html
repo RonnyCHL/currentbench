@@ -14,7 +14,8 @@
 </section>
 
 <section id="installeren"><h2>Installeren en starten</h2>
-<p>Je hebt Windows 10 of 11 nodig en Python 3.10 of nieuwer, van <b>python.org</b>. Vink bij het installeren van Python <b>Add python.exe to PATH</b> aan.</p>
+<p><b>De makkelijke weg:</b> download <b>CurrentBench-…-windows.zip</b> van de pagina Releases op GitHub, pak hem uit in een eigen map en start <b>CurrentBench.exe</b>. Installeren hoeft niet en Python is niet nodig. Het programma is niet ondertekend: Windows kan de eerste keer melden dat het je pc heeft beschermd (klik op <b>Meer informatie</b> en dan <b>Toch uitvoeren</b>), en een virusscanner kan het een halve minuut vasthouden om het te bekijken.</p>
+<p><b>Vanuit de broncode:</b> je hebt Windows 10 of 11 nodig en Python 3.10 of nieuwer, van <b>python.org</b>. Vink bij het installeren van Python <b>Add python.exe to PATH</b> aan.</p>
 <ol class="stappen">
 <li>Pak het programma uit in een eigen map, bijvoorbeeld in Documenten.</li>
 <li>Open die map in de Verkenner, typ <b>cmd</b> in de adresbalk en druk op Enter.</li>
@@ -22,6 +23,8 @@
 <li>Start het programma met <code>py korad_paneel.py</code>.</li>
 </ol>
 <p>De eerste keer volgt het programma de taal van Windows. Is die geen Nederlands of Duits, dan start het in het Engels. Je kiest de taal en de weergave bij [[Instellingen]] (hoofdstuk {ref:instellingen}).</p>
+<p>Bij de eerste start verschijnt een welkomstvenster met de vier stappen om te beginnen en de taalkeuze. Sluit het met [[groen:Aan de slag]]; je vindt het terug onder [[Gereedschap]].</p>
+<p>Het hoofdvenster begint in een eenvoudige stand: de meters, de grafiek en de regel om in te stellen. De knop [[Uitgebreid]], rechts naast de geheugenknoppen, haalt de rest erbij: het verbruik, accu nabootsen, testprogramma's, notities en het log. Met [[Eenvoudig]] gaan ze weer weg. Start je een testprogramma of een log, dan komen die regels vanzelf in beeld. Deze handleiding toont de uitgebreide stand.</p>
 <h3 id="demo">Proberen zonder voeding</h3>
 <p>Kies in de poortlijst rechtsboven <b>DEMO</b> en klik op [[blauw:Verbinden]], of start met <code>py korad_paneel.py --demo</code>. Het programma start dan opnieuw met een nagebootste voeding en een kleine nagebootste belasting. In de titelbalk staat <b>DEMO</b>.</p>
 <p>De demo opent geen enkele COM-poort. Metingen uit de demo zijn niet echt en blijven in een eigen map, los van je eigen projecten en metingen.</p>
@@ -78,10 +81,10 @@
 <p>Het programma begint met één project, <b>{{VRIJ}}</b>, dat het volledige bereik van de voeding toestaat. Maak voor elke schakeling een eigen project met een veilige grens.</p>
 <h3>Een project maken</h3>
 <ol class="stappen">
-<li>Klik links op [[Projecten]] en klik een bestaand project aan.</li>
-<li>Vul de naam, de hoogste spanning, de hoogste stroom en de reden in, en kies een kleur.</li>
-<li>Klik op [[Als nieuw project toevoegen]]. [[groen:Opslaan]] zou juist het aangeklikte project overschrijven.</li>
-<li>Klik op [[blauw:Dit project kiezen]].</li>
+<li>Klik links op [[Projecten]] en klik op [[Nieuw project maken]]. Er komt een nieuw project bij met een voorzichtige grens van 5 V en 0,5 A.</li>
+<li>Vul de naam, de hoogste spanning, de hoogste stroom en de reden in, en kies een kleur. Twee projecten kunnen niet dezelfde naam hebben.</li>
+<li>Klik op [[groen:Opslaan]].</li>
+<li>Klik op [[blauw:Dit project kiezen]]. Staat de voeding hoger ingesteld dan de grens van dat project en is de uitgang uit, dan zet het programma de ingestelde spanning omlaag naar de grens. Hetzelfde gebeurt bij het verbinden.</li>
 </ol>
 @@ projecten | Elk project heeft een eigen grens, kleur, geheugens en bewaking.
 <p>Stel je de geheugenknoppen en de bewaking in zoals je wilt, klik dan op [[Geheugens en bewaking van nu bewaren]]. Bij het kiezen van het project krijg je die waarden terug.</p>
@@ -144,6 +147,7 @@
 <section id="programmas"><h2>Testprogramma's</h2>
 <p>Een testprogramma is een reeks stappen die de voeding vanzelf doorloopt. Open het venster met [[Testprogramma's]] rechtsonder.</p>
 @@ programmas | Een testprogramma met stappen en verwachtingen.
+<p>Het venster opent met een voorbeeld. Met [[Nieuw programma]] begin je met een lege lijst: vul onderaan een stap in en klik op [[Stap toevoegen]].</p>
 <p>Per stap kies je de overgang (<i>sprong</i> of <i>helling</i>), de spanning, de stroomgrens, of de uitgang aan of uit staat en de duur. Je kunt ook een verwachting invullen: de gemiddelde stroom moet dan tussen twee grenzen liggen. Aan het eind zie je per stap <b>goed</b> of <b>fout</b>.</p>
 <p>Na [[groen:Starten]] noemt het programma het aantal stappen, de duur en de hoogste spanning, en vraagt het of het mag. Een programma dat ergens boven de projectgrens komt, start niet. De stappen staan als banden in de grafiek. Met Esc of de stopknop stop je meteen; de uitgang gaat dan uit.</p>
 </section>
@@ -261,6 +265,8 @@
 <tr><td>Script: niet bereikbaar</td><td>Draait het programma, en staat de koppeling aan bij [[Instellingen]]?</td></tr>
 <tr><td>Icoontjes zijn vierkantjes</td><td>Het lettertype Segoe MDL2 Assets ontbreekt; dat hoort op Windows 10 en 11 te staan.</td></tr>
 <tr><td>Het programma start niet</td><td>Start het vanuit de opdrachtprompt met <code>py korad_paneel.py</code>, dan zie je de foutmelding.</td></tr></table>
+<h3>Een fout melden</h3>
+<p>Open [[Gereedschap]] en klik op [[Foutinformatie]]. Dat venster zet op een rij wat nodig is om een fout uit te zoeken: de versie, Windows, het model van de voeding en de laatste fouten. Er staan geen codes, adressen, serienummers of projectnamen in, en het programma verstuurt zelf niets. [[blauw:Melden op GitHub]] kopieert de tekst en opent een nieuwe melding; plak de tekst erin en beschrijf wat er gebeurde. Heb je geen GitHub-account, dan doet [[Melden via de website]] hetzelfde met het formulier op ronnyhullegie.nl.</p>
 <h3>Over dit programma</h3>
-<p>{{NAAM}} is een gratis hobbyproject zonder winstoogmerk, gepubliceerd onder de MIT-licentie en zonder enige garantie. Het is niet officieel en niet verbonden aan Korad of een van de andere genoemde merken. Idee en opdracht komen van Ronny Hullegie; de code is geschreven door Claude (Anthropic). Fouten en verbeteringen zijn welkom op GitHub, maar ondersteuning wordt niet beloofd.</p>
+<p>{{NAAM}} is een gratis hobbyproject zonder winstoogmerk, gepubliceerd onder de MIT-licentie en zonder enige garantie. Het is niet officieel en niet verbonden aan Korad of een van de andere genoemde merken. Idee en opdracht komen van Ronny Hullegie; de code is geschreven door Claude (Anthropic). Fouten en verbeteringen zijn welkom op GitHub, maar ondersteuning wordt niet beloofd. Meer over de maker: www.ronnyhullegie.nl. De broncode staat op github.com/RonnyCHL/currentbench.</p>
 </section>
